@@ -5,11 +5,15 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import SeattleBoatMap from "../components/Images/Seattle-Boat-Map.jpg";
+import VesselList from "../components/VesselList/VesselList"
+import VesselDummyData from "../utils/VesselDummyData";
 
 
 
 
-function mapPage() {
+function mapPage(props) {
+
+
     return (
         <div>
             <Navbar />
@@ -23,7 +27,11 @@ function mapPage() {
             height: "760px",
 
             }}>
+
         </div>
+        <p>
+        <VesselList/>
+        </p>
         </div>
     )
 }
