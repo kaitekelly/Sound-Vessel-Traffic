@@ -14,7 +14,7 @@ function LandingPage() {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             width: "100%",
-            height: "760px",
+            height: "960px",
         }}>
 
                 <div className="container" style={{ color: "white", textAlign: "center", paddingTop: "150px" }}>
