@@ -32,6 +32,7 @@ function mapPage(props) {
         <p>
         <VesselList/>
         </p>
+
         </div>
     )
 }
