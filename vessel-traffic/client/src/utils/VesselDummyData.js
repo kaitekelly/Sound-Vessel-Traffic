@@ -47,7 +47,8 @@ let VesselDummyData =
         DISTANCE_TO_GO: "407",
         DISTANCE_TRAVELLED: "364",
         AVG_SPEED: "8.5",
-        MAX_SPEED: "8.80000019"
+        MAX_SPEED: "8.80000019",
+        PICTURE: "https://photos.fleetmon.com/vessels/jack-trio_9015462_2244845_Small.jpg"
     },
     {
         MMSI: "215819000",
@@ -95,7 +96,8 @@ let VesselDummyData =
         DISTANCE_TO_GO: "295",
         DISTANCE_TRAVELLED: "782",
         AVG_SPEED: "12",
-        MAX_SPEED: "13.3999996"
+        MAX_SPEED: "13.3999996",
+        PICTURE: "https://photos.fleetmon.com/vessels/kapidag_9034731_1957683_Small.jpg"
     },
     {
         MMSI: "255925000",
@@ -143,7 +145,8 @@ let VesselDummyData =
         DISTANCE_TO_GO: "183",
         DISTANCE_TRAVELLED: "333",
         AVG_SPEED: "7.80000019",
-        MAX_SPEED: "8.5"
+        MAX_SPEED: "8.5",
+        PICTURE: "https://photos.fleetmon.com/vessels/von-adler_9184433_2847489_Small.jpg"
     }
 ]
 

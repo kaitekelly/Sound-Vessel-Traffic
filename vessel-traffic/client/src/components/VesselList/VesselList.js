@@ -28,6 +28,7 @@ class VesselList extends React.Component {
 
                     <thead>
                         <tr>
+                            <th style={{ width: "25%", height: "50%" }}> Image</th>
                             <th style={{ width: "25%", height: "50%" }}>Ship ID</th>
                             <th style={{ width: "25%", height: "50%" }}>Ship Name</th>
                             <th style={{ width: "25%", height: "50%" }}> Ship Type</th>
@@ -39,11 +40,11 @@ class VesselList extends React.Component {
                         {boats.map((boat, index) => (
 
                             <tr key={index} style={{ backgroundColor: index % 2 === 0 ? "#ff33cc" : "#e495e4" }}>
+                                <td><img alt="boat" src={boat.PICTURE}/></td>
                                 <td>{boat.SHIP_ID}</td>
                                 <td>{boat.SHIPNAME}</td>
                                 <td>{boat.TYPE_NAME}</td>
                                 <td>{boat.DESTINATION}</td>
-
                             </tr>
 
                         ))}
