@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar/Navbar';
 // import Form from 'react-bootstrap/Form';
 // import Button from 'react-bootstrap/Button';
 // import { Link } from "react-router-dom";
-import SeattleBoatMap from "../components/Images/Seattle-Boat-Map.jpg";
+// import SeattleBoatMap from "../components/Images/Seattle-Boat-Map.jpg";
 import VesselList from "../components/VesselList/VesselList"
 // import VesselDummyData from "../utils/VesselDummyData";
 import MarineTrafficMap from "../components/MarineTrafficMap/MarineTrafficMap"

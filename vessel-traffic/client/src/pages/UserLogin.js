@@ -4,8 +4,12 @@ import Navbar from '../components/Navbar/Navbar';
 // import Form from 'react-bootstrap/Form';
 // import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
+
 import logoImg from '../img/ship.png';
 import { Card, Logo, Form, Input, Button, Error } from '../components/AuthForm';
+
+import SearchBoats from "../pages/SearchBoat";
+
 
 function UserLoginPage() {
     return (
@@ -45,7 +49,11 @@ function UserLoginPage() {
                     <br></br>
                     <Link to="/map">Already have an account?</Link>
                 </Form>
+
             </Card> */}
+
+            {/* <SearchBoats /> */}
+
         </div>
     )
 }
