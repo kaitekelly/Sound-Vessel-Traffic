@@ -1,31 +1,38 @@
 import React from "react";
-import VesselDummyData from "../../utils/VesselDummyData";
-// import Iframe from 'react-iframe'
-// import ScriptTag from 'react-script-tag';
+import searchShips from "../../utils/API"
+import API from "../../utils/API";
+// import VesselDummyData from "../../utils/VesselDummyData";
+import ShipDummyData from "../../utils/ShipDummyData.json";
 
 
-class VesselList extends React.Component {
+class MarineTraffic extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            boats: []
-        }
+            search: "",
+            ships: []
+        };
     }
-
+    
+  
+    //what should i pass into searchShips?
     componentDidMount() {
-        fetch(VesselDummyData)
-            .then(res => this.setState({ boats: VesselDummyData }))
-            .catch(err => console.log(err));
-    }
+        fetch(ShipDummyData) 
+        .then(res => this.setState({ ships: ShipDummyData }))
+        .catch(err => console.log(err));
+        console.log(ShipDummyData); 
 
-    render() {
+    };
 
-        const { boats } = this.state;
 
-        console.log(this.state.boats)
+    render () {
+
+        const { ships } = this.state;
+        console.log(this.state.ships)
 
         return (
             <div>
+
                 <table>
 
 
@@ -40,14 +47,14 @@ class VesselList extends React.Component {
                     </thead>
 
                     <tbody id="employeeTable">
-                        {boats.map((boat, index) => (
+                        {ships.map((ship, index) => (
 
                             <tr key={index} style={{ backgroundColor: index % 2 === 0 ? "#ff33cc" : "#e495e4" }}>
-                                <td><img alt="boat" src={boat.PICTURE} /></td>
-                                <td>{boat.SHIP_ID}</td>
-                                <td>{boat.SHIPNAME}</td>
-                                <td>{boat.TYPE_NAME}</td>
-                                <td>{boat.DESTINATION}</td>
+                                <td><img alt="ship" src={ship.PICTURE} /></td>
+                                <td>{ship.SHIP_ID}</td>
+                                <td>{ship.SHIPNAME}</td>
+                                <td>{ship.TYPE_NAME}</td>
+                                <td>{ship.DESTINATION}</td>
                             </tr>
 
                         ))}
@@ -58,11 +65,10 @@ class VesselList extends React.Component {
             </div>
         )
 
-    }
 
+
+        )
+    }
 }
 
-
-
-
-export default VesselList
+export default MarineTraffic;
