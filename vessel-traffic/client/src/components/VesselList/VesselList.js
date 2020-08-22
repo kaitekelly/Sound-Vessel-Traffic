@@ -1,7 +1,7 @@
 import React from "react";
 import VesselDummyData from "../../utils/VesselDummyData";
-import Iframe from 'react-iframe'
-import ScriptTag from 'react-script-tag';
+// import Iframe from 'react-iframe'
+// import ScriptTag from 'react-script-tag';
 
 
 class VesselList extends React.Component {
@@ -16,7 +16,6 @@ class VesselList extends React.Component {
         fetch(VesselDummyData)
             .then(res => this.setState({ boats: VesselDummyData }))
             .catch(err => console.log(err));
-
     }
 
     render() {
@@ -27,10 +26,6 @@ class VesselList extends React.Component {
 
         return (
             <div>
-
-
-            
-
                 <table>
 
 

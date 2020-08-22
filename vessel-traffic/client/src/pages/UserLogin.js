@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
+import SearchBoats from "../pages/SearchBoat";
 
 function UserLoginPage() {
     return (
@@ -28,6 +29,7 @@ function UserLoginPage() {
                     <Link to="/map">Already have an account?</Link>
                 </Form>
             </Card>
+            {/* <SearchBoats /> */}
         </div>
     )
 }
