@@ -1,5 +1,6 @@
 import React from "react";
 import VesselDummyData from "../../utils/VesselDummyData";
+import ShipDummyData from "../../utils/ShipDummyData"
 // import Iframe from 'react-iframe'
 // import ScriptTag from 'react-script-tag';
 
@@ -13,8 +14,8 @@ class VesselList extends React.Component {
     }
 
     componentDidMount() {
-        fetch(VesselDummyData)
-            .then(res => this.setState({ boats: VesselDummyData }))
+        fetch(ShipDummyData)
+            .then(res => this.setState({ boats: ShipDummyData }))
             .catch(err => console.log(err));
     }
 

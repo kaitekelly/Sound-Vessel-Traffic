@@ -25,7 +25,7 @@
       "ROT": "0",
       "TYPE_NAME": "Sailing Vessel",
       "AIS_TYPE_SUMMARY": "Sailing Vessel",
-      "DESTINATION": "CLASS B",
+      "DESTINATION": "Seattle",
       "ETA": ""
    },
    {
@@ -54,7 +54,7 @@
       "ROT": "0",
       "TYPE_NAME": "Pleasure Craft",
       "AIS_TYPE_SUMMARY": "Pleasure Craft",
-      "DESTINATION": "CLASS B",
+      "DESTINATION": "Portland",
       "ETA": ""
    },
    {
@@ -83,7 +83,7 @@
       "ROT": "0",
       "TYPE_NAME": "Sailing Vessel",
       "AIS_TYPE_SUMMARY": "Sailing Vessel",
-      "DESTINATION": "CLASS B",
+      "DESTINATION": "San Francisco",
       "ETA": ""
    },
    {
@@ -170,7 +170,7 @@
       "ROT": "0",
       "TYPE_NAME": "Pleasure Craft",
       "AIS_TYPE_SUMMARY": "Pleasure Craft",
-      "DESTINATION": "",
+      "DESTINATION": "Los Angeles",
       "ETA": ""
    },
    {
@@ -199,7 +199,7 @@
       "ROT": "0",
       "TYPE_NAME": "Pleasure Craft",
       "AIS_TYPE_SUMMARY": "Pleasure Craft",
-      "DESTINATION": "CLASS B",
+      "DESTINATION": "Los Angeles",
       "ETA": ""
    },
    {
@@ -228,7 +228,7 @@
       "ROT": "0",
       "TYPE_NAME": "Sailing Vessel",
       "AIS_TYPE_SUMMARY": "Sailing Vessel",
-      "DESTINATION": "CLASS B",
+      "DESTINATION": "Vashon Island",
       "ETA": ""
    },
    {
@@ -257,7 +257,7 @@
       "ROT": "0",
       "TYPE_NAME": "Sailing Vessel",
       "AIS_TYPE_SUMMARY": "Sailing Vessel",
-      "DESTINATION": "CLASS B",
+      "DESTINATION": "Anacortes",
       "ETA": ""
    },
    {
