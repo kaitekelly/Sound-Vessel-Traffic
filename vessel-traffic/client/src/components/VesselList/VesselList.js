@@ -1,5 +1,7 @@
 import React from "react";
 import VesselDummyData from "../../utils/VesselDummyData";
+import Iframe from 'react-iframe'
+import ScriptTag from 'react-script-tag';
 
 
 class VesselList extends React.Component {
@@ -14,6 +16,7 @@ class VesselList extends React.Component {
         fetch(VesselDummyData)
             .then(res => this.setState({ boats: VesselDummyData }))
             .catch(err => console.log(err));
+
     }
 
     render() {
@@ -24,7 +27,12 @@ class VesselList extends React.Component {
 
         return (
             <div>
+
+
+            
+
                 <table>
+
 
                     <thead>
                         <tr>
@@ -40,7 +48,7 @@ class VesselList extends React.Component {
                         {boats.map((boat, index) => (
 
                             <tr key={index} style={{ backgroundColor: index % 2 === 0 ? "#ff33cc" : "#e495e4" }}>
-                                <td><img alt="boat" src={boat.PICTURE}/></td>
+                                <td><img alt="boat" src={boat.PICTURE} /></td>
                                 <td>{boat.SHIP_ID}</td>
                                 <td>{boat.SHIPNAME}</td>
                                 <td>{boat.TYPE_NAME}</td>
