@@ -30,6 +30,7 @@
     "react-iframe": "^1.8.0",
     "react-inline-script": "^1.2.0",
     "react-script-tag": "^1.1.2",
-    "react-typekit": "^1.1.4"
+    "react-typekit": "^1.1.4",
+    "styled-components": "^5.1.1"
   }
 }
