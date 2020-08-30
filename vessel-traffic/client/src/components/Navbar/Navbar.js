@@ -40,6 +40,14 @@ function Navbar() {
               Boat Map
             </Link>
           </li>
+          <li className="nav-item">
+            <Link
+              to="/plantrip"
+              className={window.location.pathname === "/plantrip" ? "nav-link active" : "nav-link"}
+            >
+              Plan Trip
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>
