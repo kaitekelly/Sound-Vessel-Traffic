@@ -52,4 +52,13 @@ th {
 }
 
 #marineTrafficMap {
-border: 2px solid black;}
+border: 2px solid black;
+}
+
+.fa-calendar-alt {
+  font-size: 22px;
+}
+
+.datePicker {
+  border-radius: 10px;
+}

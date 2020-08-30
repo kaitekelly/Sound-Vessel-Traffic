@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from '../components/Navbar/Navbar';
 import FormCheck from 'react-bootstrap/FormCheck';
 import FormControl from 'react-bootstrap/FormControl';
@@ -8,47 +8,90 @@ import Calendar from 'react-calendar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import ImageBackground from "../components/Images/Seattle-Boats.jpg";
 
 
 function PlanTrip() {
+
+    const [startDate, setStartDate] = useState(Date.now());
+    const [endDate, setEndDate] = useState(Date.now());
+
+
     return (
 
-        <div>
+        <div style={{
+            backgroundImage: `url(${ImageBackground})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            width: "100%",
+            height: "1000px",
+        }}>
+
             <Navbar />
 
-            <h1>Plan your trip here</h1>
 
-            <Form>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Start</Form.Label>
-                    <Form.Control type="email" placeholder="Start location" />
-                    <Form.Text className="text-muted">
-                    </Form.Text>
-                </Form.Group>
+            <Container style={{ backgroundColor: "white", padding: "50px", borderRadius: "25px", marginTop: "100px" }}>
 
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>End</Form.Label>
-                    <Form.Control type="password" placeholder="End location" />
-                </Form.Group>
+                <h1 style={{ textAlign: "center" }}>Plan your trip here</h1>
 
-                <Container>
-                    <Row>
-                        <Col>
-                            <Calendar />
-                        </Col>
-                        <Col>
-                            <Calendar />
-                        </Col>
-                    </Row>
-                </Container>
 
-                <Form.Group controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Save Trip" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
+                <Form >
+                    <Form.Group controlId="formBasicEmail" >
+                        <Form.Label>Start</Form.Label>
+                        <Form.Control type="email" placeholder="Start location" style={{ borderRadius: "10px" }} />
+                        <Form.Text className="text-muted">
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>End</Form.Label>
+                        <Form.Control type="password" placeholder="End location" style={{ borderRadius: "10px" }} />
+                    </Form.Group>
+
+                    <Container>
+                        <br></br>
+                        <Row>
+                            <Col>
+                                <i class="far fa-calendar-alt"></i>
+                                <DatePicker
+                                    className="datePicker"
+                                    selected={startDate}
+                                    onChange={date => setStartDate(date)}
+                                    selectsStart
+                                    startDate={startDate}
+                                    endDate={endDate}
+                                />
+                            </Col>
+                            <Col>
+                                <i class="far fa-calendar-alt"></i>
+                                <DatePicker
+                                    className="datePicker"
+                                    selected={endDate}
+                                    onChange={date => setEndDate(date)}
+                                    selectsEnd
+                                    startDate={startDate}
+                                    endDate={endDate}
+                                    minDate={startDate}
+                                />
+                            </Col>
+                        </Row>
+                        <br></br>
+                        <Form.Group controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="Save Trip" />
+                        </Form.Group>
+                    </Container>
+
+
+                    <Button variant="primary" type="submit">
+                        Submit
                 </Button>
-            </Form>
+                </Form>
+
+            </Container>
+
         </div>
     )
 
