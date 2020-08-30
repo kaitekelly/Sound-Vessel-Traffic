@@ -50,3 +50,6 @@ td {
 th {
   text-align: center;
 }
+
+#marineTrafficMap {
+border: 2px solid black;}

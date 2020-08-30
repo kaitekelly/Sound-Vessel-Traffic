@@ -2,41 +2,54 @@ import React from "react";
 import ImageBackground from "../components/Images/Seattle-Boats.jpg";
 import '../App.css';
 import { Link } from "react-router-dom";
+import SoundVesselTrafficLandingpageBackground from "../components/Videos/SoundVesselTrafficLandingpageBackground.mp4";
 
 
 
 function LandingPage() {
     return (
-        
-        <div style={{
+        <div>
+            {/* <div style={{
             backgroundImage: `url(${ImageBackground})`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             width: "100%",
             height: "1000px",
-        }}>
+        }}> */}
 
-                <div className="container" style={{ color: "white", textAlign: "center", paddingTop: "150px" }}>
-                    <h1 style={{ fontFamily: 'Kaushan Script' }}>Hello Boats</h1>
-                    <h2 style={{ fontFamily: 'Kaushan Script' }}>Sail the world</h2>
+            <video autoPlay loop muted
+                style={{
+                    position: "absolute",
+                    width: "100%",
+                    objectFit: "cover",
+                    zIndex: "-1",
+                    opacity: "70%"
+                }}
+            >
+                <source src={SoundVesselTrafficLandingpageBackground} type="video/mp4" />
+            </video>
 
-                    <Link
+            <div className="container" style={{ color: "white", textAlign: "center", paddingTop: "150px" }}>
+                <h1 style={{ fontFamily: 'Kaushan Script' }}>Hello Boats</h1>
+                <h2 style={{ fontFamily: 'Kaushan Script' }}>Sail the world</h2>
+
+                <Link
                     to="/userlogin"
                     className={
-                    window.location.pathname === "/userlogin" || window.location.pathname === "/userlogin"
-                        ? "nav-link active"
-                        : "nav-link"
+                        window.location.pathname === "/userlogin" || window.location.pathname === "/userlogin"
+                            ? "nav-link active"
+                            : "nav-link"
                     }
-                    ><button type="button" className="btn btn-outline-primary">Log In</button></Link>
-                    <Link
+                ><button type="button" className="btn btn-outline-primary">Log In</button></Link>
+                <Link
                     to="/signup"
                     className={
                         window.location.pathname === "/signup" || window.location.pathname === "/signup"
-                        ? "nav-link active"
-                        : "nav-link"
+                            ? "nav-link active"
+                            : "nav-link"
                     }
-                    ><button type="button" className="btn btn-outline-primary"> Sign Up</button></Link>
+                ><button type="button" className="btn btn-outline-primary"> Sign Up</button></Link>
             </div>
         </div >
     )
