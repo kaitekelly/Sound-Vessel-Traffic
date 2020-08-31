@@ -19,15 +19,13 @@ const connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "Silvia13!",
+    password: "",
     database: "sound_vessel_traffic_db"
 });
 
 connection.connect(function(err) {
-    if (err) {
-        console.error('error connecting: ' + err.stack);
-        return;
-    }
+    console.log("connected!!!!!")
+    if (err)  throw err;
     console.log('connected as id ' + connection.threadId);
 });
 
