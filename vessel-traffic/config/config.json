@@ -1,0 +1,20 @@
+{
+    "development": {
+      "username": "root",
+      "password": "null",
+      "database": "sound_vessel_traffic_db",
+      "host": "localhost",
+      "dialect": "mysql"
+    },
+    "test": {
+      "username": "root",
+      "password": null,
+      "database": "database_test",
+      "host": "localhost",
+      "dialect": "mysql"
+    },
+    "production": {
+      "use_env_variable": "JAWSDB_URL",
+      "dialect": "mysql"
+    }
+  }
