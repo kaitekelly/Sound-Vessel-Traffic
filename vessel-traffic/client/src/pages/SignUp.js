@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar/Navbar';
 // import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import logoImg from '../img/ship.png';
-import { Card, Logo, Form, Input, Button, Error } from '../components/AuthForm';
+import { Card, Logo, Form, Input, Button } from '../components/AuthForm';
 
 
 function SignUpPage() {

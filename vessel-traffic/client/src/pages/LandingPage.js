@@ -7,6 +7,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
 
 function LandingPage() {
+
     return (
         <div>
             {/* <div style={{
@@ -41,6 +42,7 @@ function LandingPage() {
                             ? "nav-link active"
                             : "nav-link"
                     }
+
                 ><button style={{ fontFamily: 'Kaushan Script' }} type="button" className="btn btn-outline-primary">Log In</button></Link>
                 <Link
                     to="/signup"
@@ -49,6 +51,7 @@ function LandingPage() {
                             ? "nav-link active"
                             : "nav-link"
                     }
+
                 ><button style={{ fontFamily: 'Kaushan Script' }} type="button" className="btn btn-outline-primary"> Sign Up</button></Link>
             </div>
         </div >
