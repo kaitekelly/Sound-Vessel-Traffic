@@ -43,8 +43,8 @@ function LandingPage() {
                             : "nav-link"
                     }
 
-                ><button style={{ fontFamily: 'Kaushan Script' }} type="button" className="btn btn-outline-primary">Log In</button></Link>
-                <Link
+                ><button style={{ fontFamily: 'Kaushan Script' }} type="button" className="btn btn-outline-primary">Enter Site</button></Link>
+                {/* <Link
                     to="/signup"
                     className={
                         window.location.pathname === "/signup" || window.location.pathname === "/signup"
@@ -52,7 +52,7 @@ function LandingPage() {
                             : "nav-link"
                     }
 
-                ><button style={{ fontFamily: 'Kaushan Script' }} type="button" className="btn btn-outline-primary"> Sign Up</button></Link>
+                ><button style={{ fontFamily: 'Kaushan Script' }} type="button" className="btn btn-outline-primary"> Sign Up</button></Link> */}
             </div>
         </div >
     )
