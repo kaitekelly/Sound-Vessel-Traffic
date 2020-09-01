@@ -1,6 +1,6 @@
 
 
-module.exports = function(seqelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
     const Trip = sequelize.define("Trip", {
         sail_date_id: {
             type: DataTypes.DATEONLY
@@ -18,7 +18,7 @@ module.exports = function(seqelize, DataTypes) {
             type: DataTypes.DATE
         }, 
         // can i write this like this?
-        PRIMAR_KEY: {
+        PRIMARY_KEY: {
             type = sail_date_id
         }
     

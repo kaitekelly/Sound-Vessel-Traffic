@@ -22,14 +22,13 @@ module.exports = function(sequelize, DataTypes) {
 
         first_name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
 
         last_name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         }
-
     });
     // we'll need to add first name and last name to login page
     //we could add password hashing here based on Oath2
