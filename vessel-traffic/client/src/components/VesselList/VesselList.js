@@ -44,7 +44,7 @@ class VesselList extends React.Component {
                         {boats.map((boat, index) => (
 
                             <tr key={index} style={{ backgroundColor: index % 2 === 0 ? "#ff33cc" : "#e495e4" }}>
-                                <td><img alt="boat" src={boat.PICTURE} /></td>
+                                <td><img alt="boat" src={boat.URL} style={{height: "25%"}} /></td>
                                 <td>{boat.SHIP_ID}</td>
                                 <td>{boat.SHIPNAME}</td>
                                 <td>{boat.TYPE_NAME}</td>

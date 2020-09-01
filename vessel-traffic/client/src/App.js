@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import UserLoginPage from './pages/UserLogin';
 import SignUpPage from './pages/SignUp';
 import mapPage from './pages/Map';
+import PlanTrip from './pages/PlanTrip'
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
           <Route exact path="/userlogin" component={UserLoginPage} />
           {/* <Route exact path="/signup" component={SignUpPage} /> */}
           <Route exact path="/map" component={mapPage} />
+          <Route exact path="/plantrip" component={PlanTrip} />
+
         </div>
       </Router>
     </div>

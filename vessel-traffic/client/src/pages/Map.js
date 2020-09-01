@@ -9,6 +9,11 @@ import VesselList from "../components/VesselList/VesselList"
 // import VesselDummyData from "../utils/VesselDummyData";
 import MarineTrafficMap from "../components/MarineTrafficMap/MarineTrafficMap"
 import SampleMap from '../components/SampleMap/SampleMap';
+import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
+import '../App.css';
+
+
 
 
 
@@ -19,7 +24,7 @@ function mapPage(props) {
 
     return (
 
-        <div>
+        <div style={{textAlign:"center"}}>
 
 
 
@@ -37,12 +42,23 @@ function mapPage(props) {
 
         </div> */}
 
-            <MarineTrafficMap />
+<h1>Plan your trip here</h1>
+
+<Button><Link
+    to="/plantrip"
+    className={window.location.pathname === "/plantrip" ? "nav-link active" : "nav-link"}
+            >
+    <h1 style={{color:"white"}}>Plan your voyage</h1>
+    </Link></Button>
+
+<div id="marineTrafficMap">
+<MarineTrafficMap />
+</div>
 
 
-            <p>
+            {/* <p>
                 <VesselList />
-            </p>
+            </p> */}
 
         </div>
     )
