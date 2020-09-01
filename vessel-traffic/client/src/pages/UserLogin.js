@@ -4,32 +4,38 @@ import Navbar from '../components/Navbar/Navbar';
 // import Form from 'react-bootstrap/Form';
 // import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
-
 import logoImg from '../img/ship.png';
-import { Card, Logo, Form, Input, Button, Error } from '../components/AuthForm';
-
+import LoginButton from '../components/LoginButton';
+import LogoutButton from '../components/LogoutButton';
+import { Card, Logo, Form, Input, Button } from '../components/AuthForm';
+import { useAuth0 } from '@auth0/auth0-react';
+import Profile from '../components/Profile'
 import SearchBoats from "../pages/SearchBoat";
 
 
 function UserLoginPage() {
-    return (
+    const { loginWithRedirect, isAuthenticated } = useAuth0();
+    const { logout } = useAuth0();
 
+    return (
         <div>
             <Navbar />
             <Card>
                 <Logo src={logoImg} />
                 <Form>
-                    <Input
+                    {/* <Input
                         type="email"
                         placeholder="email"
                     />
                     <Input
                         type="password"
                         placeholder="password"
-                    />
-                    <Button>Sign In</Button>
+                    /> */}
+                    <LoginButton >Sign In</LoginButton>
+                    <LogoutButton >Sign Out</LogoutButton>
+                    <Profile />
                 </Form>
-                <Link to="/signup">Don't have an account?</Link>
+                {/* <Link to="/signup">Don't have an account?</Link> */}
             </Card>
 
 

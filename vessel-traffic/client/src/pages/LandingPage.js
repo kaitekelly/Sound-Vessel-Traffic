@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 
 function LandingPage() {
+
     return (
         
         <div style={{
@@ -28,15 +29,15 @@ function LandingPage() {
                         ? "nav-link active"
                         : "nav-link"
                     }
-                    ><button type="button" className="btn btn-outline-primary">Log In</button></Link>
-                    <Link
+                    ><button type="button" className="btn btn-outline-primary">Enter Site</button></Link>
+                    {/* <Link
                     to="/signup"
                     className={
                         window.location.pathname === "/signup" || window.location.pathname === "/signup"
                         ? "nav-link active"
                         : "nav-link"
                     }
-                    ><button type="button" className="btn btn-outline-primary"> Sign Up</button></Link>
+                    ><button type="button" className="btn btn-outline-primary"> Sign Up</button></Link> */}
             </div>
         </div >
     )
