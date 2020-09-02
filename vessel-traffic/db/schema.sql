@@ -28,7 +28,7 @@ CREATE TABLE user (
 );
 
 CREATE TABLE sailDate (
-  sail_date_id INT NULL,
+  sail_date_id INT NOT NULL,
   start_destination VARCHAR(30) NOT NULL,
   end_destination VARCHAR(30) NOT NULL,
   start_sail_date INT NULL,

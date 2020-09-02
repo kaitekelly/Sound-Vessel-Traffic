@@ -10,19 +10,42 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import ImageBackground from "../components/Images/Seattle-Boats.jpg";
+import ImageBackground from "../components/Images/Seattle-Boats2.JPG";
+import API from "../utils/API";
+import { List, ListItem } from "../components/List/List"
+import { Link } from "react-router-dom";
 
 
 function PlanTrip() {
 
     const [startDate, setStartDate] = useState(Date.now());
     const [endDate, setEndDate] = useState(Date.now());
+    const [traffic, setTraffic] = useState([])
 
+    function handleFormSubmit(event) {
+        event.preventDefault()
+        waveHello()
+    }
+
+    function waveHello() {
+        console.log('👋');
+    }
+
+    useEffect(() => {
+        loadTraffic()
+    }, [])
+
+    function loadTraffic() {
+        API.getTraffic()
+            .then(res => 
+                setTraffic(res.data))
+            .catch(err => console.log(err));
+    };
 
     return (
 
-        <div style={{
-            backgroundImage: `url(${ImageBackground})`,
+        <div id="planTripPageStyle" style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${ImageBackground})`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
@@ -55,7 +78,7 @@ function PlanTrip() {
                         <br></br>
                         <Row>
                             <Col>
-                                <i class="far fa-calendar-alt"></i>
+                                <i className="far fa-calendar-alt"></i>
                                 <DatePicker
                                     className="datePicker"
                                     selected={startDate}
@@ -66,7 +89,7 @@ function PlanTrip() {
                                 />
                             </Col>
                             <Col>
-                                <i class="far fa-calendar-alt"></i>
+                                <i className="far fa-calendar-alt"></i>
                                 <DatePicker
                                     className="datePicker"
                                     selected={endDate}
@@ -85,11 +108,42 @@ function PlanTrip() {
                     </Container>
 
 
-                    <Button variant="primary" type="submit">
+                    <Button onClick={handleFormSubmit} variant="primary" type="submit">
                         Submit
                 </Button>
                 </Form>
 
+            </Container>
+
+            <Container fluid id="resultsdiv" >
+                <h1>Ships encountered</h1>
+                {traffic.length ? (
+                    <List>
+                        {traffic.map(traffics => (
+                            <ListItem key={traffics.ship_id}>
+                                <Link to={"/plannedtrip/" + traffics.ship_id}>
+                                    <strong>
+                                        <ul>
+                                        Ship Name: {traffics.ship_name}
+                                        <br></br>
+                                         Ship Type: {traffics.ship_type_name}
+                                         <br></br>
+                                         Flag: {traffics.flag}
+                                         <br></br>
+                                         Destination: {traffics.destination}
+                                         <br></br>
+                                         Eta: {traffics.eta}
+                                         </ul>
+                                    </strong>
+                                </Link>
+                                <br></br>
+                                {/* <DeleteBtn onClick={() => deleteBook(traffics.ship_id)} /> */}
+                            </ListItem>
+                        ))}
+                    </List>
+                ) : (
+                        <h3>No Results to Display</h3>
+                    )}
             </Container>
 
         </div>

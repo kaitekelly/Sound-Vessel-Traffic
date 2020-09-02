@@ -7,7 +7,7 @@ import UserLoginPage from './pages/UserLogin';
 import SignUpPage from './pages/SignUp';
 import mapPage from './pages/Map';
 import PlanTrip from './pages/PlanTrip'
-
+import PlannedTrip from './pages/PlannedTrip'
 
 function App() {
   return (
@@ -19,7 +19,9 @@ function App() {
           {/* <Route exact path="/signup" component={SignUpPage} /> */}
           <Route exact path="/map" component={mapPage} />
           <Route exact path="/plantrip" component={PlanTrip} />
-
+          <Route exact path="/plannedtrip">
+          <PlannedTrip />
+        </Route>
         </div>
       </Router>
     </div>
