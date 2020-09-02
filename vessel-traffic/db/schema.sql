@@ -6,7 +6,7 @@ USE sound_vessel_traffic_db;
 
 CREATE TABLE traffic (
     id int NOT NULL AUTO_INCREMENT,
-    shid_id INT,
+    ship_id INT,
     imo INT,
     mmsi INT,
     ship_name varchar(255) NOT NULL,
