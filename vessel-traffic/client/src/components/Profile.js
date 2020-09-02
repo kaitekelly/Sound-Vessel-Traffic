@@ -9,7 +9,7 @@ const Profile = () => {
             <div>
                 <h5>Signed in as: {user.name}</h5>
                 {/* <p>{user.email}</p> */}
-                {/* {JSON.stringify(user, null, 2)} */}
+                {JSON.stringify(user, null, 2)}
             </div>
         )
     )

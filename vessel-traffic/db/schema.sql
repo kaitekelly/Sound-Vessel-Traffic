@@ -13,8 +13,8 @@ CREATE TABLE traffic (
     callsign varchar(255) NOT NULL,
     flag varchar(255) NOT NULL,
     ship_type_name varchar(255) NOT NULL,
-    destination varchar(255) NOT NULL,
-    eta char(255) NOT NULL,
+    destination varchar(255),
+    eta char(255),
     ship_length INT,
     ship_width INT,
     PRIMARY KEY (id)

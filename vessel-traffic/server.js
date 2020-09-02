@@ -3,7 +3,8 @@ const mysql = require("mysql");
 const routes = require("./controllers/shipsController");
 const app = express();
 const PORT = process.env.PORT || 3001;
-// const db = require("./models");
+const db = require("./models");
+const bodyParser = require('body-parser');
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -18,10 +19,10 @@ app.use(routes);
 app.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
   });
-
-//   db.sequelize.sync().then(function() {
-//     app.listen(PORT, function() {
-//       console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
-//     });
-//   });
+//*** When i uncomment this listener for sequelize it says port 3001 is already in use
+  // db.sequelize.sync().then(function() {
+  //   app.listen(PORT, function() {
+  //     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+  //   });
+  // });
   

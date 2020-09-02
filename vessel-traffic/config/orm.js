@@ -1,16 +1,5 @@
 let connection = require("../config/connection.js");
 
-function selectAll() {
-
-};
-
-function insertOne(){
-
-};
-
-function updateOne() {
-
-};
 
 function printQuestionMarks(num) {
   let arr = [];

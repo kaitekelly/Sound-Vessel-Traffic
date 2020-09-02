@@ -1,0 +1,52 @@
+{
+  "files": {
+<<<<<<< HEAD
+    "main.css": "/static/css/main.afb1d796.chunk.css",
+    "main.js": "/static/js/main.ee465b12.chunk.js",
+    "main.js.map": "/static/js/main.ee465b12.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b9e764f3.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b9e764f3.js.map",
+    "static/css/2.25ff2e5b.chunk.css": "/static/css/2.25ff2e5b.chunk.css",
+    "static/js/2.67352d8d.chunk.js": "/static/js/2.67352d8d.chunk.js",
+    "static/js/2.67352d8d.chunk.js.map": "/static/js/2.67352d8d.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.dd07a0a203be7ad1ef24e21c6e785f12.js": "/precache-manifest.dd07a0a203be7ad1ef24e21c6e785f12.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.25ff2e5b.chunk.css.map": "/static/css/2.25ff2e5b.chunk.css.map",
+    "static/css/main.afb1d796.chunk.css.map": "/static/css/main.afb1d796.chunk.css.map",
+    "static/js/2.67352d8d.chunk.js.LICENSE.txt": "/static/js/2.67352d8d.chunk.js.LICENSE.txt",
+    "static/media/Seattle-Boats.jpg": "/static/media/Seattle-Boats.754469fb.jpg",
+    "static/media/Seattle-Boats2.JPG": "/static/media/Seattle-Boats2.eb919fa5.JPG",
+=======
+    "main.css": "/static/css/main.3b3e5495.chunk.css",
+    "main.js": "/static/js/main.7857977e.chunk.js",
+    "main.js.map": "/static/js/main.7857977e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.b9e764f3.js",
+    "runtime-main.js.map": "/static/js/runtime-main.b9e764f3.js.map",
+    "static/css/2.25ff2e5b.chunk.css": "/static/css/2.25ff2e5b.chunk.css",
+    "static/js/2.8b944545.chunk.js": "/static/js/2.8b944545.chunk.js",
+    "static/js/2.8b944545.chunk.js.map": "/static/js/2.8b944545.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.d91241f2f85e72d72144541cab2a1fa3.js": "/precache-manifest.d91241f2f85e72d72144541cab2a1fa3.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.25ff2e5b.chunk.css.map": "/static/css/2.25ff2e5b.chunk.css.map",
+    "static/css/main.3b3e5495.chunk.css.map": "/static/css/main.3b3e5495.chunk.css.map",
+    "static/js/2.8b944545.chunk.js.LICENSE.txt": "/static/js/2.8b944545.chunk.js.LICENSE.txt",
+    "static/media/Seattle-Boats.jpg": "/static/media/Seattle-Boats.754469fb.jpg",
+>>>>>>> e946a5694cdc801361fb12669f36e40085afc003
+    "static/media/SoundVesselTrafficLandingpageBackground.mp4": "/static/media/SoundVesselTrafficLandingpageBackground.af742254.mp4"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b9e764f3.js",
+    "static/css/2.25ff2e5b.chunk.css",
+<<<<<<< HEAD
+    "static/js/2.67352d8d.chunk.js",
+    "static/css/main.afb1d796.chunk.css",
+    "static/js/main.ee465b12.chunk.js"
+=======
+    "static/js/2.8b944545.chunk.js",
+    "static/css/main.3b3e5495.chunk.css",
+    "static/js/main.7857977e.chunk.js"
+>>>>>>> e946a5694cdc801361fb12669f36e40085afc003
+  ]
+}
