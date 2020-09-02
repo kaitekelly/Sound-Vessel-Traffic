@@ -1,7 +1,5 @@
 // const db = require("../models");
-
 let express = require("express");
-
 let router = express.Router();
 
 let connected = require("../config/connection")
@@ -29,6 +27,7 @@ router.delete("/api/deletetrips/:id", function(req, res) {
 
 
   ship.delete(condition, function(result) {
+
    
   });
 });
@@ -42,6 +41,6 @@ router.put("/api/ships/:id", function(req, res) {
    
   });
 });
-
 module.exports = router;
+
 

@@ -1,5 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   const Ship = sequelize.define("ship", {
+
     id: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -45,3 +46,4 @@ module.exports = function(sequelize, DataTypes) {
   })
   return Ship;
 }
+

@@ -5,14 +5,17 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             unique: true,
         },
+
         subId: {
             type: DataTypes.STRING,
             allowNull: false
         },
+
         first_name: {
             type: DataTypes.STRING,
             allowNull: true
         },
+
         last_name: {
             type: DataTypes.STRING,
             allowNull: true
