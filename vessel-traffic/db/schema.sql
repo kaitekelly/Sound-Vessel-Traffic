@@ -6,7 +6,7 @@ USE sound_vessel_traffic_db;
 
 CREATE TABLE traffic (
     id int NOT NULL AUTO_INCREMENT,
-    shid_id INT,
+    ship_id INT,
     imo INT,
     mmsi INT,
     ship_name varchar(255) NOT NULL,
@@ -28,9 +28,9 @@ CREATE TABLE user (
 );
 
 CREATE TABLE sailDate (
-  sail_date_id INT NULL,
-  start_destination VARCHAR(255) NOT NULL,
-  end_destination VARCHAR(255) NOT NULL,
+  sail_date_id INT NOT NULL,
+  start_destination VARCHAR(30) NOT NULL,
+  end_destination VARCHAR(30) NOT NULL,
   start_sail_date INT NULL,
   end_sail_date INT NULL,
   PRIMARY KEY (sail_date_id)  

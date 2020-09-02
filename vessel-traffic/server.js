@@ -13,21 +13,8 @@ app.use(express.json());
   app.use(express.static("client/build"));
 // }
 
-
-//Connect to the MySQL DB
-const connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "whitecat1",
-    database: "sound_vessel_traffic_db"
-});
-
-connection.connect(function(err) {
-    console.log("connected!!!!!")
-    if (err)  throw err;
-    console.log('connected as id ' + connection.threadId);
-});
+// Add routes, both API and view
+app.use(routes);
 
 app.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

@@ -9,5 +9,9 @@ export default {
         return axios.get( AREAURL);
     },
 
+    getTraffic: function() {
+        return axios.get("/plannedtrip");
+      },
+
     
 };
