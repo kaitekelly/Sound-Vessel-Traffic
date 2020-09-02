@@ -5,7 +5,7 @@ let connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
-  password: "Silvia13!",
+  password: "whitecat1",
   database: "sound_vessel_traffic_db"
 });
 
@@ -15,7 +15,7 @@ if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Silvia13!',
+    password: "whitecat1",
     database: "sound_vessel_traffic_db"
   });
 }
