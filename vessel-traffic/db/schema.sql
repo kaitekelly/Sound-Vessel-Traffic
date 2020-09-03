@@ -1,6 +1,5 @@
 DROP DATABASE IF EXISTS sound_vessel_traffic_db;
 
-
 CREATE DATABASE sound_vessel_traffic_db;
 USE sound_vessel_traffic_db;
 
@@ -17,7 +16,7 @@ CREATE TABLE ships (
     eta char(255),
     ship_length INT,
     ship_width INT,
-    PRIMARY KEY (main_id)
+	PRIMARY KEY (main_id)
 ); 
 
 CREATE TABLE user (
