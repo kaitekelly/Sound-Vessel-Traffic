@@ -13,5 +13,7 @@ export default {
         return axios.get("/api/ships");
       },
 
-    
+      getTrips: function() {
+        return axios.get("/api/trips");
+      },
 };

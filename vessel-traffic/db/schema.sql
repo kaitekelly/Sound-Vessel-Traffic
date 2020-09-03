@@ -17,7 +17,7 @@ CREATE TABLE ships (
     eta char(255),
     ship_length INT,
     ship_width INT,
-    PRIMARY KEY (id)
+    PRIMARY KEY (main_id)
 ); 
 
 CREATE TABLE user (
@@ -27,11 +27,11 @@ CREATE TABLE user (
   PRIMARY KEY (user_id)  
 );
 
-CREATE TABLE sailDate (
-  sail_date_id INT NOT NULL,
+CREATE TABLE trips (
+  sail_date_id INT NOT NULL AUTO_INCREMENT,
   start_destination VARCHAR(30) NOT NULL,
   end_destination VARCHAR(30) NOT NULL,
-  start_sail_date INT NULL,
-  end_sail_date INT NULL,
+  start_sail_date DATE NULL,
+  end_sail_date DATE NULL,
   PRIMARY KEY (sail_date_id)  
 );
