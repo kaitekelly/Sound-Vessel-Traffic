@@ -16,7 +16,7 @@ app.use(express.json());
 // }
 
 //routes
-app.use(require("./routes/api/index"));
+app.use(require("./routes"));
 
 //Connect to the MySQL DB
 // const connection = mysql.createConnection({

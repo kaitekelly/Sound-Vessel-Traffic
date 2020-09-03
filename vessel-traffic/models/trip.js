@@ -1,3 +1,4 @@
+
 module.exports = function(sequelize, DataTypes) {
     const Trip = sequelize.define("Trip", {
         sail_date_id: {

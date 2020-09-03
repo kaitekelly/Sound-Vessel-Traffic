@@ -39,7 +39,7 @@
     "react-inline-script": "^1.2.0",
     "react-script-tag": "^1.1.2",
     "react-typekit": "^1.1.4",
-    "sequelize": "^6.3.4",
+    "sequelize": "^5.22.3",
     "styled-components": "^5.1.1"
   }
 }
