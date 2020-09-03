@@ -13,7 +13,7 @@
     "build": "cd client && npm run build",
     "server": "nodemon server.js",
     "heroku-postbuild": "npm run build",
-    "dev":"nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
