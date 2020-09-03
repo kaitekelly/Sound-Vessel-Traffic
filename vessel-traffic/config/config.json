@@ -1,11 +1,14 @@
 {
     "development": {
       "username": "root",
-      "password": "whitecat1",
+      "password": "Silvia13!",
       "database": "sound_vessel_traffic_db",
       "host": "127.0.0.1",
       "port": 3306,
-      "dialect": "mysql"
+      "dialect": "mysql",
+      "define": {
+        "timestamps": false
+      }
     },
     "test": {
       "username": "root",

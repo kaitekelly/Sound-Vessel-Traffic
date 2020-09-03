@@ -4,8 +4,8 @@ DROP DATABASE IF EXISTS sound_vessel_traffic_db;
 CREATE DATABASE sound_vessel_traffic_db;
 USE sound_vessel_traffic_db;
 
-CREATE TABLE traffic (
-    id int NOT NULL AUTO_INCREMENT,
+CREATE TABLE ships (
+    main_id int NOT NULL AUTO_INCREMENT,
     ship_id INT,
     imo INT,
     mmsi INT,

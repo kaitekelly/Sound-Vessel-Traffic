@@ -38,7 +38,8 @@ function PlanTrip() {
     function loadTraffic() {
         API.getTraffic()
             .then(res => 
-                setTraffic(res.data))
+                {console.log(res)
+                setTraffic(res.data)})
             .catch(err => console.log(err));
     };
 

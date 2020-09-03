@@ -10,7 +10,7 @@ export default {
     },
 
     getTraffic: function() {
-        return axios.get("/plannedtrip");
+        return axios.get("/api/ships");
       },
 
     

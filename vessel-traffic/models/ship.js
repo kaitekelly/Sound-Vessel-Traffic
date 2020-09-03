@@ -1,9 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
-  const Ship = sequelize.define("ship", {
+  return sequelize.define("Ship", {
 
-    main_id: {
+    id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     ship_id: {
       type: DataTypes.INTEGER
@@ -35,15 +36,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     eta: {
-      type: DataTypes.DATE
+      type: DataTypes.STRING
     },
     ship_length: {
       type: DataTypes.INTEGER
     },
     ship_width: {
       type: DataTypes.INTEGER
-    }
+    },
+      
   })
-  return Ship;
+  // return Ship;
 }
 
