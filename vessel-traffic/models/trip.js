@@ -1,9 +1,11 @@
 
 module.exports = function(sequelize, DataTypes) {
-    const Trip = sequelize.define("Trip", {
+    return sequelize.define("Trip", {
         sail_date_id: {
-            type: DataTypes.DATEONLY
-        },
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true
+                },
         start_destination: {
             type: DataTypes.STRING
         },
@@ -22,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
         // }
     
     });
-    return Trip;
+    // return Trip;
 }
 
 // CREATE TABLE sailDate (

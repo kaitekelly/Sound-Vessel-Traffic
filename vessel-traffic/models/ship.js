@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define("Ship", {
 
-    id: {
+    main_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true

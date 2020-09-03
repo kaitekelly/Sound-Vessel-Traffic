@@ -116,8 +116,8 @@ function PlanTrip() {
 
             </Container>
 
-            <Container fluid id="resultsdiv" >
-                <h1>Ships encountered</h1>
+            <Container fluid id="resultsdiv" style={{color: "white", textAlign: "center"}} >
+                <h1 >Ships encountered</h1>
                 {traffic.length ? (
                     <List>
                         {traffic.map(traffics => (

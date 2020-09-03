@@ -1,20 +1,20 @@
 let db = require("../../models");
 const router = require("express").Router();
 //route to get all trips
-router.route("/trips").get(function(req, res) {
+router.route("/").get(function(req, res) {
     let query = {};
     if (req.query.trip_id) {
-        query.tripId = req.query.trip_id;
+        query.TripId = req.query.trip_id;
     }
     db.Trip.findAll({
         where: query, 
-        include: [db.Trip]
+        includes: [db.Trip]
     }).then(function(dbTrip) {
         res.json(dbTrip);
     });
 });
 //route to get a single trip
-router.route("/trips").get(function(req, res) {
+router.route("/:id").get(function(req, res) {
     db.Trip.findOne({
         where: {
             id: req.params.id
@@ -24,8 +24,8 @@ router.route("/trips").get(function(req, res) {
         res.json(dbTrip);
     });
 });
-//Post route for saving a new post
-router.route("/trips").get(function(req, res) {
+//Trip route for saving a new trip
+router.route("/").get(function(req, res) {
     db.Trip.create(req.body).then(function(dbTrip) {
         res.json(dbTrip);
     });
