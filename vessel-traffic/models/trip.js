@@ -1,5 +1,3 @@
-
-
 module.exports = function(sequelize, DataTypes) {
     const Trip = sequelize.define("Trip", {
         sail_date_id: {
@@ -18,9 +16,9 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.DATE
         }, 
         // can i write this like this?
-        PRIMARY_KEY: {
-            type = sail_date_id
-        }
+        // PRIMARY_KEY: {
+            // type = sail_date_id
+        // }
     
     });
     return Trip;
