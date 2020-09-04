@@ -16,4 +16,8 @@ export default {
       getTrips: function() {
         return axios.get("/api/trips");
       },
+
+      saveTrip: function(tripData) {
+        return axios.post("/api/trips", tripData);
+      }
 };

@@ -7,24 +7,62 @@ import Button from 'react-bootstrap/Button';
 import Calendar from 'react-calendar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col'
+import Col from 'react-bootstrap/Col';
+import InputGroup from 'react-bootstrap/InputGroup'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ImageBackground from "../components/Images/Seattle-Boats2.JPG";
 import API from "../utils/API";
 import { List, ListItem } from "../components/List/List"
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function PlanTrip() {
 
-    const [startDate, setStartDate] = useState(Date.now());
-    const [endDate, setEndDate] = useState(Date.now());
-    const [traffic, setTraffic] = useState([])
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+    const [traffic, setTraffic] = useState([]);
 
-    function handleFormSubmit(event) {
-        event.preventDefault()
-        waveHello()
+    const [searchTerm, setSearchTerm] = useState({
+        startLocation: "",
+        endLocation: "",
+        // startingDate: new Date(),
+        // endingDate: new Date()
+    })
+
+    const [tripDates, setTripDates] = useState({
+        startingDate: new Date(),
+        endingDate: new Date()
+    })
+
+
+
+    const handleInputChange = (event, date) => {
+        event.preventDefault();
+        const value = event.target.value
+        setSearchTerm({
+            ...searchTerm, [event.target.name]: value
+        });
+        console.log(value)
+
+    }
+
+    const handleChangeDate = (date) => {
+        setTripDates({
+            startingDate: date,
+            endingDate: date
+        })
+        console.log(date)
+    }
+
+    const onSubmitHandler = (event) => {
+        // Prevent browser refreshing after form submission
+        event.preventDefault();
+        // Call fetch books async function
+        setSearchTerm('')
     }
 
     function waveHello() {
@@ -37,12 +75,32 @@ function PlanTrip() {
 
     function loadTraffic() {
         API.getTraffic()
-            .then(res => 
-                {console.log(res)
-                setTraffic(res.data)})
+            .then(res => {
+                console.log(res)
+                setTraffic(res.data)
+            })
             .catch(err => console.log(err));
     };
 
+    function toasty() {
+        console.log("cheers to that")
+        toast("Your trip has been saved", {
+            position: toast.POSITION.TOP_CENTER
+        });
+
+    }
+
+    function handleFormSubmit(index) {
+        console.log(index);
+        waveHello();
+        API.saveTrip({
+            start_destination: searchTerm.startLocation,
+            end_destination: searchTerm.endLocation,
+            start_sail_date: tripDates.startingDate,
+            end_sail_date: tripDates.endingDate
+        })
+        setSearchTerm("")
+    }
     return (
 
         <div id="planTripPageStyle" style={{
@@ -65,14 +123,12 @@ function PlanTrip() {
                 <Form >
                     <Form.Group controlId="formBasicEmail" >
                         <Form.Label>Start</Form.Label>
-                        <Form.Control type="email" placeholder="Start location" style={{ borderRadius: "10px" }} />
-                        <Form.Text className="text-muted">
-                        </Form.Text>
+                        <Form.Control type="text" placeholder="Start location" value={searchTerm.startLocation} name="startLocation" onChange={handleInputChange} style={{ borderRadius: "10px" }} />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>End</Form.Label>
-                        <Form.Control type="password" placeholder="End location" style={{ borderRadius: "10px" }} />
+                        <Form.Control type="text" placeholder="End location" value={searchTerm.endLocation} name="endLocation" onChange={handleInputChange} style={{ borderRadius: "10px" }} />
                     </Form.Group>
 
                     <Container>
@@ -82,23 +138,35 @@ function PlanTrip() {
                                 <i className="far fa-calendar-alt"></i>
                                 <DatePicker
                                     className="datePicker"
-                                    selected={startDate}
-                                    onChange={date => setStartDate(date)}
-                                    selectsStart
-                                    startDate={startDate}
-                                    endDate={endDate}
+                                    selected={tripDates.startingDate}
+                                    onChange={handleChangeDate}
+                                    // selectsStart
+                                    // startDate={startDate}
+                                    // endDate={endDate}
+                                    showTimeSelect
+                                    timeFormat="HH:mm"
+                                    timeIntervals={20}
+                                    timeCaption="time"
+                                    name="startingDate"
+                                    dateFormat="MM/dd/yyyy"
                                 />
                             </Col>
                             <Col>
                                 <i className="far fa-calendar-alt"></i>
                                 <DatePicker
                                     className="datePicker"
-                                    selected={endDate}
-                                    onChange={date => setEndDate(date)}
-                                    selectsEnd
-                                    startDate={startDate}
-                                    endDate={endDate}
-                                    minDate={startDate}
+                                    selected={tripDates.endingDate}
+                                    onChange={handleChangeDate}
+                                    // selectsEnd
+                                    // startDate={startDate}
+                                    // endDate={endDate}
+                                    // minDate={startDate}
+                                    showTimeSelect
+                                    timeFormat="HH:mm"
+                                    timeIntervals={20}
+                                    timeCaption="time"
+                                    name="endingDate"
+                                    dateFormat="MM/dd/yyyy"
                                 />
                             </Col>
                         </Row>
@@ -109,14 +177,15 @@ function PlanTrip() {
                     </Container>
 
 
-                    <Button onClick={handleFormSubmit} variant="primary" type="submit">
+                    <Button onClick={(event) => { handleFormSubmit(event); toasty() }} variant="primary" type="submit">
                         Submit
                 </Button>
+                    <ToastContainer autoClose={5000} />
                 </Form>
 
             </Container>
 
-            <Container fluid id="resultsdiv" style={{color: "white", textAlign: "center"}} >
+            <Container fluid id="resultsdiv" style={{ color: "white", textAlign: "center" }} >
                 <h1 >Ships encountered</h1>
                 {traffic.length ? (
                     <List>
@@ -125,16 +194,16 @@ function PlanTrip() {
                                 <Link to={"/plannedtrip/" + traffics.ship_id}>
                                     <strong>
                                         <ul>
-                                        Ship Name: {traffics.ship_name}
-                                        <br></br>
+                                            Ship Name: {traffics.ship_name}
+                                            <br></br>
                                          Ship Type: {traffics.ship_type_name}
-                                         <br></br>
+                                            <br></br>
                                          Flag: {traffics.flag}
-                                         <br></br>
+                                            <br></br>
                                          Destination: {traffics.destination}
-                                         <br></br>
+                                            <br></br>
                                          Eta: {traffics.eta}
-                                         </ul>
+                                        </ul>
                                     </strong>
                                 </Link>
                                 <br></br>

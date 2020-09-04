@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     return sequelize.define("Trip", {
         sail_date_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             primaryKey: true
                 },
         start_destination: {
