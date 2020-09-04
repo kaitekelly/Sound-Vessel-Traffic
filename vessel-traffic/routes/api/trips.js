@@ -25,7 +25,7 @@ router.route("/:id").get(function(req, res) {
     });
 });
 //Trip route for saving a new trip
-router.route("/").get(function(req, res) {
+router.route("/").post(function(req, res) {
     db.Trip.create(req.body).then(function(dbTrip) {
         res.json(dbTrip);
     });

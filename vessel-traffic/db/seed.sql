@@ -38,7 +38,7 @@ VALUE (1, 4448177, 0, 338225775, "KINGFISHER", "WDE9999", "US", "Fishing Vessel"
 (35, 445502, 8856613, 367445470, "CAPE GREIG", "WDF3906", "US", "Fishing Vessel", "BELLINGHAM", "2020-09-012T20:43:00", 53.25, 9.14),
 (36, 433726, 8992962, 367005070, "CHIEF SEATTLE", "VTTM4", "HK", "Fire Fighting Vessel", "VASHON", "2020-09-012T17:32:00", 29, 8),
 (37, 455459, 8346962, 369021000, "SWIFT ARROW", "WAFK", "US", "Port Tender", "VASHON", "2020-09-012T18:39:00", 14, 4),
-(38, 445543, 8632962, 367446340, "OASIS", "WDF3973", "US", "Pleasure Craft", "BALLARD LOCKS", "2020-09-012T20:26:00", 33, 8),
+(38, 445543, 8632962, 367446340, "OASIS", "WDF3973", "US", "Pleasure Craft", "BALLARD LOCKS", "2020-09-012T20:26:00", 33, 8);
 
 INSERT INTO trips (sail_date_id, start_destination, end_destination, start_sail_date, end_sail_date)
 VALUE (1, "Vashon Island", "Kayak Point", "2020-09-12", "2020-09-12")
