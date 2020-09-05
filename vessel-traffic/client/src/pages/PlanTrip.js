@@ -25,6 +25,8 @@ function PlanTrip() {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const [traffic, setTraffic] = useState([]);
+    const [trip, setTrip] = useState([])
+
 
     const [searchTerm, setSearchTerm] = useState({
         startLocation: "",
@@ -61,7 +63,6 @@ function PlanTrip() {
     const onSubmitHandler = (event) => {
         // Prevent browser refreshing after form submission
         event.preventDefault();
-        // Call fetch books async function
         setSearchTerm('')
     }
 
@@ -72,6 +73,19 @@ function PlanTrip() {
     useEffect(() => {
         loadTraffic()
     }, [])
+
+    useEffect(() => {
+        loadTrips()
+    }, [])
+
+    function loadTrips() {
+        API.getTrips()
+            .then(res => {
+                console.log(res)
+                setTrip(res.data)
+            })
+            .catch(err => console.log(err));
+    };
 
     function loadTraffic() {
         API.getTraffic()
@@ -101,6 +115,13 @@ function PlanTrip() {
         })
         setSearchTerm("")
     }
+
+    function deleteTrip(id) {
+        API.deleteTrip(id)
+            .then(res => loadTrips())
+            .catch(err => console.log(err));
+    }
+
     return (
 
         <div id="planTripPageStyle" style={{
@@ -185,13 +206,13 @@ function PlanTrip() {
 
             </Container>
 
-            <Container fluid id="resultsdiv" style={{ color: "white", textAlign: "center" }} >
+            {/* <Container fluid id="resultsdiv" style={{ color: "white", textAlign: "center" }} >
                 <h1 >Ships encountered</h1>
                 {traffic.length ? (
                     <List>
                         {traffic.map(traffics => (
-                            <ListItem key={traffics.ship_id}>
-                                <Link to={"/plannedtrip/" + traffics.ship_id}>
+                            <ListItem key={traffics.id}>
+                                <Link to={"/plannedtrip/" + traffics.id}>
                                     <strong>
                                         <ul>
                                             Ship Name: {traffics.ship_name}
@@ -207,7 +228,41 @@ function PlanTrip() {
                                     </strong>
                                 </Link>
                                 <br></br>
-                                {/* <DeleteBtn onClick={() => deleteBook(traffics.ship_id)} /> */}
+                            </ListItem>
+                        ))}
+                    </List>
+                ) : (
+                        <h3>No Results to Display</h3>
+                    )}
+            </Container> */}
+
+            <h1>Planned Trips</h1>
+
+            <Container fluid id="resultsdiv" style={{ color: "white", textAlign: "center" }} >
+                <h1 >Trips</h1>
+                {trip.length ? (
+                    <List>
+                        {trip.map(trips => (
+                            <ListItem key={trips.sail_date_id}>
+                                <Link to={"/plannedtrip/" + trips.sail_date_id}>
+                                    <strong>
+                                        <ul>
+                                            ID: {trips.sail_date_id}
+                                            <br></br>
+                                            Start: {trips.start_destination}
+                                            <br></br>
+                                 End: {trips.end_destination}
+                                            <br></br>
+                                 Start Date: {trips.start_sail_date}
+                                            <br></br>
+                                 End Date: {trips.end_sail_date}
+                                            <br></br>
+                                 Eta: {trips.eta}
+                                        </ul>
+                                    </strong>
+                                </Link>
+                                <br></br>
+                                <Button onClick={() => deleteTrip(trips.sail_date_id)}>Delete Trip</Button>
                             </ListItem>
                         ))}
                     </List>
@@ -215,6 +270,7 @@ function PlanTrip() {
                         <h3>No Results to Display</h3>
                     )}
             </Container>
+
 
         </div>
     )

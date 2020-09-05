@@ -1,5 +1,5 @@
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define("Ship", {
+module.exports = function (sequelize, DataTypes) {
+  var Ship = sequelize.define("Ship", {
 
     main_id: {
       type: DataTypes.INTEGER,
@@ -44,8 +44,18 @@ module.exports = function(sequelize, DataTypes) {
     ship_width: {
       type: DataTypes.INTEGER
     },
-      
-  })
-  // return Ship;
+
+  });
+
+  Ship.associate = function (models) {
+    Ship.belongsTo(models.Trip, {
+      foreignKey: {
+        allowNull: true
+      }
+    }
+    );
+  }
+
+  return Ship;
 }
 

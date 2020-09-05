@@ -13,20 +13,22 @@ import "react-datepicker/dist/react-datepicker.css";
 import ImageBackground from "../components/Images/Seattle-Boats2.JPG";
 import API from "../utils/API";
 import { List, ListItem } from "../components/List/List"
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function PlannedTrip () {
 
-    const [trip, setTrip] = useState([])
+    const [trip, setTrip] = useState({})
+    const { id } = useParams()
+
 
     useEffect(() => {
         loadTrips()
     }, [])
 
     function loadTrips() {
-        API.getTrips()
+        API.getPlannedTrips(id)
             .then(res => 
-                {console.log(res)
+                {console.log(res.data)
                 setTrip(res.data)})
             .catch(err => console.log(err));
     };
@@ -37,15 +39,22 @@ function PlannedTrip () {
 
         <Navbar />
 
-        <h1>Planned Trips</h1>
+        <h1>Saved Trips</h1>
+
+        <h1>{trip.sail_date_id}</h1>
+        <h1>{trip.start_destination}</h1>
+        <h1>{trip.end_destination}</h1>
+        <h1>{trip.start_sail_date}</h1>
+        <h1>{trip.end_sail_date}</h1>
+
 
         <Container fluid id="resultsdiv" style={{color: "white", textAlign: "center"}} >
-                <h1 >Trip</h1>
+                <h1 >Trips</h1>
                 {trip.length ? (
                     <List>
                         {trip.map(trips => (
-                            <ListItem key={trips.ship_id}>
-                                <Link to={"/plannedtrip/" + trips.ship_id}>
+                            <ListItem key={trips.sail_date_id}>
+                                <Link to={"/plannedtrip/" + trips.sail_date_id}>
                                     <strong>
                                         <ul>
                                         Start: {trips.start_destination}
@@ -61,7 +70,7 @@ function PlannedTrip () {
                                     </strong>
                                 </Link>
                                 <br></br>
-                                {/* <DeleteBtn onClick={() => deleteBook(traffics.ship_id)} /> */}
+                                {/* <DeleteBtn onClick={() => deleteBook(traffics.sail_date_id)} /> */}
                             </ListItem>
                         ))}
                     </List>

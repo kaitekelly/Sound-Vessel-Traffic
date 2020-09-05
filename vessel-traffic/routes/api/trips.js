@@ -8,18 +8,19 @@ router.route("/").get(function(req, res) {
     }
     db.Trip.findAll({
         where: query, 
-        includes: [db.Trip]
+        includes: [{model: db.Trip, include: [{ model: db.Ship}]}]
     }).then(function(dbTrip) {
         res.json(dbTrip);
     });
 });
 //route to get a single trip
 router.route("/:id").get(function(req, res) {
+    console.log("is this working")
     db.Trip.findOne({
         where: {
-            id: req.params.id
+            sail_date_id: req.params.id
         },
-        include: [db.Trip]
+        includes: [db.Trip]
     }).then(function(dbTrip) {
         res.json(dbTrip);
     });
@@ -31,10 +32,11 @@ router.route("/").post(function(req, res) {
     });
 });
 //DELETE route for deleting trips
-router.route("/trips/:id").get(function(req, res) {
+router.route("/:id").delete(function(req, res) {
+    console.log("is this another problem")
     db.Trip.destroy({
         where: {
-            id: req.params.id
+            sail_date_id: req.params.id
         }
     }).then(function(dbTrip) {
         res.json(dbTrip);
