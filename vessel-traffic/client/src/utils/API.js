@@ -17,7 +17,15 @@ export default {
         return axios.get("/api/trips");
       },
 
+      getPlannedTrips: function(id) {
+        return axios.get("/api/trips/" + id);
+      },
+
       saveTrip: function(tripData) {
         return axios.post("/api/trips", tripData);
-      }
+      },
+
+      deleteTrip: function(id) {
+        return axios.delete("/api/trips/" + id);
+      },
 };

@@ -19,7 +19,7 @@ function App() {
           {/* <Route exact path="/signup" component={SignUpPage} /> */}
           <Route exact path="/map" component={mapPage} />
           <Route exact path="/plantrip" component={PlanTrip} />
-          <Route exact path="/plannedtrip">
+          <Route exact path="/plannedtrip/:id">
           <PlannedTrip />
         </Route>
         </div>

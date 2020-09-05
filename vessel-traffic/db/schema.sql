@@ -33,4 +33,6 @@ CREATE TABLE trips (
   start_sail_date DATE NULL,
   end_sail_date DATE NULL,
   PRIMARY KEY (sail_date_id)  
+  FOREIGN KEY (main_id)
+
 );
