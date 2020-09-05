@@ -28,4 +28,14 @@ export default {
       deleteTrip: function(id) {
         return axios.delete("/api/trips/" + id);
       },
+      
+      saveUser: function(userInfo) {
+        console.log("Saving user in API.js")
+        return axios.post("/api/users", userInfo);
+      },
+
+      // getUser: function(userLogin) {
+      //   console.log("User logging in API.js")
+      //   return axios.get("/api/users", userLogin);
+      // }
 };

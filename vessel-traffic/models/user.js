@@ -1,66 +1,49 @@
+const bcrypt = require("bcryptjs");
 // models should look like below
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     const User = sequelize.define("User", {
-        email: {
-            type: DataTypes.STRING, 
-            allowNull: false, 
-            unique: true, 
+        user_id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
         },
-
-        subId: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-
         first_name: {
             type: DataTypes.STRING,
             allowNull: true
         },
-
         last_name: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: true
+            }
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     });
-    console.log(User === sequelize.models.User);
+
+    // User.sync()
+    //     .then(() => console.log('User table created successfully'))
+    //     // .catch(err) => console.log("Nope, no db.")
+
+    // User.prototype.validPassword = function (password) {
+    //     return bcrypt.compareSync(password, this.password);
+    // };
+
+    // User.addHook("beforeCreate", user => {
+    //     user.password = bcrypt.hashSync(
+    //         user.password,
+    //         bcrypt.genSaltSync(10),
+    //         null
+    //     );
+    // });
     return User;
-}
+};
 
-// const sql = require("../db/db.js");
-
-// //constructor
-// const User = function(user) {
-//     this.email = user.email;
-//     this.userId = user.userId;
-// };
-
-// User.create = (newUser, result) => {
-//     sql.query("INSERT INTO users SET ?", newUser, (err, res) => {
-//         if (err) {
-//             console.log("error: ", err);
-//             result(err, null);
-//             return;
-//         }
-//         console.log("created user: ", { id: res.insertId, ...newUser});
-//         result(null, { id: res.insertId, ...newUser});
-//     });
-// };
-
-// User.findById = (userId, result) => {
-//     sql.query(`SELECT * FROM users WHERE id = ${userId}`, (err, res) => {
-//         if(err) {
-//             console.log("error: ", err)
-//             result(err, null);
-//             return;
-//         }
-//         if (res.length) {
-//             console.log("found customer: ", res[0]);
-//             result(null, res[0]);
-//             return;
-//         }
-
-//         //not found
-//     })
-// }
-
-// module.exports = User;

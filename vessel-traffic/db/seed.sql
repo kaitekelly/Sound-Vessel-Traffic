@@ -42,3 +42,6 @@ VALUE (1, 4448177, 0, 338225775, "KINGFISHER", "WDE9999", "US", "Fishing Vessel"
 
 INSERT INTO trips (sail_date_id, start_destination, end_destination, start_sail_date, end_sail_date)
 VALUE (1, "Vashon Island", "Kayak Point", "2020-09-12", "2020-09-12")
+
+INSERT INTO users (user_id, first_name, last_name, email, password)
+VALUE (1, "Emily", "Baker", "emily.baker@email.com", "123456")
