@@ -49,9 +49,8 @@ module.exports = function (sequelize, DataTypes) {
 
   Ship.associate = function (models) {
     Ship.belongsTo(models.Trip, {
-      foreignKey: {
-        allowNull: true
-      }
+      foreignKey: 'main_id',
+      targetKey: 'main_id'
     }
     );
   }

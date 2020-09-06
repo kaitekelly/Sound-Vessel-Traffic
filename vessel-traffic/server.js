@@ -4,7 +4,7 @@ const mysql = require("mysql");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const db = require("./models");
-const passport = require('./config/passport');
+const passport = require('passport');
 
 // Define middleware here
 
