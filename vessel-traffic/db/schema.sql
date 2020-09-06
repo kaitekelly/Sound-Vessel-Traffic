@@ -19,10 +19,12 @@ CREATE TABLE ships (
 	PRIMARY KEY (main_id)
 ); 
 
-CREATE TABLE user (
+CREATE TABLE users (
   user_id INT NOT NULL AUTO_INCREMENT,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
+  email VARCHAR(30) NOT NULL,
+  password VARCHAR(30) NOT NULL,
   PRIMARY KEY (user_id)  
 );
 
@@ -36,3 +38,10 @@ CREATE TABLE trips (
   FOREIGN KEY (main_id)
 
 );
+
+CREATE TABLE `sessions` (
+  `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `expires` int(11) unsigned NOT NULL,
+  `data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

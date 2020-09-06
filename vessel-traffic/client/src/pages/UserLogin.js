@@ -1,21 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from '../components/Navbar/Navbar';
 // import Card from 'react-bootstrap/Card';
 // import Form from 'react-bootstrap/Form';
 // import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import logoImg from '../img/ship.png';
-import LoginButton from '../components/LoginButton';
-import LogoutButton from '../components/LogoutButton';
+// import LoginButton from '../components/LoginButton';
+// import LogoutButton from '../components/LogoutButton';
 import { Card, Logo, Form, Input, Button } from '../components/AuthForm';
-import { useAuth0 } from '@auth0/auth0-react';
-import Profile from '../components/Profile'
-import SearchBoats from "../pages/SearchBoat";
+import API from "../utils/API";
+import { ToastContainer, toast } from 'react-toastify';
+// import { useAuth0 } from '@auth0/auth0-react';
+// import Profile from '../components/Profile'
+// import SearchBoats from "../pages/SearchBoat";
 
 
 function UserLoginPage() {
-    const { loginWithRedirect, isAuthenticated } = useAuth0();
-    const { logout } = useAuth0();
+    // const { loginWithRedirect, isAuthenticated } = useAuth0();
+    // const { logout } = useAuth0();
+    const [userObject, setUserObject] = useState({
+        email: "",
+        password: ""
+    })
+
+
+    // function toasty() {
+    //     console.log("User logged in!")
+    //     toast("Welcome to Sound Vessel Traffic!", {
+    //         position: toast.POSITION.TOP_CENTER
+    //     });
+    // }
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target
+        setUserObject({...userObject, [name]: value})
+        console.log(value)
+    }
+
+    // function handleFormSubmit(id) {
+    //     console.log("I'm logging in!")
+    //     if (userObject.email && userObject.password) {
+    //         API.getUser(id)
+    //         // .then(res => redirect)
+    //         setUserObject("")
+    //     }
+    // }
 
     return (
         <div>
@@ -23,19 +52,26 @@ function UserLoginPage() {
             <Card>
                 <Logo src={logoImg} />
                 <Form>
-                    {/* <Input
+                    <Input
                         type="email"
                         placeholder="email"
+                        name="email"
+                        onChange={handleInputChange}
                     />
                     <Input
                         type="password"
                         placeholder="password"
-                    /> */}
-                    <LoginButton >Sign In</LoginButton>
-                    <LogoutButton >Sign Out</LogoutButton>
-                    <Profile />
+                        name="password"
+                        onChange={handleInputChange}
+                    />
+                    <Button 
+                    // onClick={handleFormSubmit}
+                    >Sign in</Button>
+                    {/* <LoginButton >Sign In</LoginButton> */}
+                    {/* <LogoutButton >Sign Out</LogoutButton> */}
+                    {/* <Profile /> */}
                 </Form>
-                {/* <Link to="/signup">Don't have an account?</Link> */}
+                <Link to="/signup">Don't have an account?</Link>
             </Card>
 
 

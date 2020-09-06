@@ -20,7 +20,7 @@ function Navbar() {
                   : "nav-link"
               }
             >
-              User Sign in/Sign out
+              User Sign in
             </Link>
           </li>
           
