@@ -10,6 +10,10 @@ import VesselList from "../components/VesselList/VesselList"
 import MarineTrafficMap from "../components/MarineTrafficMap/MarineTrafficMap"
 import SampleMap from '../components/SampleMap/SampleMap';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col'
+
 import { Link } from "react-router-dom";
 import '../App.css';
 
@@ -29,7 +33,6 @@ function mapPage(props) {
 
 
             <Navbar />
-            <h1>See Boat Maps Here</h1>
             {/* <div style={{
             backgroundImage: `url(${SeattleBoatMap})`,
             backgroundPosition: 'center',
@@ -42,6 +45,13 @@ function mapPage(props) {
 
         </div> */}
 
+
+<Row>
+    <Col>
+<MarineTrafficMap />
+</Col>
+
+<Col>
 <h1>Plan your trip here</h1>
 
 <Button><Link
@@ -50,10 +60,8 @@ function mapPage(props) {
             >
     <h1 style={{color:"white"}}>Plan your voyage</h1>
     </Link></Button>
-
-<div id="marineTrafficMap">
-<MarineTrafficMap />
-</div>
+</Col>
+</Row>
 
 
             {/* <p>

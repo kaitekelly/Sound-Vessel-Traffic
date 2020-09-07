@@ -46,10 +46,12 @@ function PlannedTrip () {
         <h1>{trip.end_destination}</h1>
         <h1>{trip.start_sail_date}</h1>
         <h1>{trip.end_sail_date}</h1>
+        <h1>{trip.eta}</h1>
+
 
 
         <Container fluid id="resultsdiv" style={{color: "white", textAlign: "center"}} >
-                <h1 >Trips</h1>
+                <h1 style={{color: "black"}} >Trips</h1>
                 {trip.length ? (
                     <List>
                         {trip.map(trips => (
@@ -67,6 +69,7 @@ function PlannedTrip () {
                                          <br></br>
                                          Eta: {trips.eta}
                                          </ul>
+
                                     </strong>
                                 </Link>
                                 <br></br>

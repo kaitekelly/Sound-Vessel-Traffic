@@ -7,12 +7,13 @@ router.route("/").get(function(req, res) {
         query.TripId = req.query.trip_id;
     }
     db.Trip.findAll({
-        where: query, 
+        where: query,
         includes: [{model: db.Trip, include: [{ model: db.Ship}]}]
     }).then(function(dbTrip) {
         res.json(dbTrip);
     });
 });
+
 //route to get a single trip
 router.route("/:id").get(function(req, res) {
     console.log("is this working")
@@ -20,9 +21,42 @@ router.route("/:id").get(function(req, res) {
         where: {
             sail_date_id: req.params.id
         },
-        includes: [db.Trip]
+        includes: [{model: db.Trip, include: [{ model: db.Ship}]}]
     }).then(function(dbTrip) {
+        console.log("find the problem")
         res.json(dbTrip);
+        let [trips] = [{dbTrip}]
+        const resObj = trips.map(trip => {
+            return Object.assign(
+                {}, {
+                   sail_date_id: trip.sail_date_id,
+                   start_destination: trip.start_destination,
+                   end_destination: trip.end_destination,
+                   start_sail_date: trip.start_sail_date,
+                   end_sail_date: trip.end_sail_date,
+                   main_id: trip.main_id.map(ship => {
+                       return Object.assign(
+                           {},
+                           {
+                            main_id: ship.main_id,
+                            ship_id: ship.ship_id,
+                            imo: ship.imo,
+                            mmsi: ship.mmsi,
+                            ship_name: ship.ship_name,
+                            callsign: ship.callsign,
+                            flag: ship.flag,
+                            ship_type_name: ship.ship_type_name,
+                            destination: ship.destination,
+                            ship_length: ship.ship_length,
+                            ship_width: ship.ship_width,
+                            eta: ship.eta
+                           }
+                       )
+                   })
+                }
+            )
+        })
+        res.json(resObj)
     });
 });
 //Trip route for saving a new trip

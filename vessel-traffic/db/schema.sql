@@ -34,8 +34,9 @@ CREATE TABLE trips (
   end_destination VARCHAR(30) NOT NULL,
   start_sail_date DATE NULL,
   end_sail_date DATE NULL,
+  main_id int,
   PRIMARY KEY (sail_date_id)  
-  FOREIGN KEY (main_id)
+  FOREIGN KEY (main_id) references ships(main_id)
 
 );
 

@@ -13,6 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 // import { useAuth0 } from '@auth0/auth0-react';
 // import Profile from '../components/Profile'
 // import SearchBoats from "../pages/SearchBoat";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function UserLoginPage() {
@@ -24,12 +25,12 @@ function UserLoginPage() {
     })
 
 
-    // function toasty() {
-    //     console.log("User logged in!")
-    //     toast("Welcome to Sound Vessel Traffic!", {
-    //         position: toast.POSITION.TOP_CENTER
-    //     });
-    // }
+    function toasty() {
+        console.log("User logged in!")
+        toast("Welcome to Sound Vessel Traffic!", {
+            position: toast.POSITION.TOP_CENTER
+        });
+    }
 
     const handleInputChange = (event) => {
         const { name, value } = event.target

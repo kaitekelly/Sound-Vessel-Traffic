@@ -31,7 +31,9 @@ function LandingPage() {
                 <source src={SoundVesselTrafficLandingpageBackground} type="video/mp4" />
             </video>
 
-            <div className="container" style={{ color: "white", textShadow: "4px 4px 4px #000000", textAlign: "center", paddingTop: "150px" }}>
+            <div className="container" style={{ color: "white", textShadow: "3px 3px 3px #000000", textAlign: "center", paddingTop: "150px" }}>
+
+                <h1 style={{ fontFamily: 'Kaushan Script', fontSize: "75px" }}>Welcome to Sound Vessel Traffic</h1>
                 <h1 style={{ fontFamily: 'Kaushan Script' }}>Hello Boats</h1>
                 <h2 style={{ fontFamily: 'Kaushan Script' }}>Sail the world</h2>
 
