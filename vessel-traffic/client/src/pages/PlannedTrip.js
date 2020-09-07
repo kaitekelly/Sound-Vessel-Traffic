@@ -4,6 +4,7 @@ import FormCheck from 'react-bootstrap/FormCheck';
 import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Jumbotron from 'react-bootstrap/Jumbotron';
 import Calendar from 'react-calendar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -14,10 +15,12 @@ import ImageBackground from "../components/Images/Seattle-Boats2.JPG";
 import API from "../utils/API";
 import { List, ListItem } from "../components/List/List"
 import { Link, useParams } from "react-router-dom";
+import SeattleLakeUnionBoat from '../components/Images/Seattle-Lake-Union.JPG'
 
-function PlannedTrip () {
+function PlannedTrip() {
 
     const [trip, setTrip] = useState({})
+    const [trippy, setTrippy] = useState([])
     const { id } = useParams()
 
 
@@ -27,48 +30,65 @@ function PlannedTrip () {
 
     function loadTrips() {
         API.getPlannedTrips(id)
-            .then(res => 
-                {console.log(res.data)
-                setTrip(res.data)})
+            .then(res => {
+                console.log(res.data)
+                setTrip(res.data)
+                setTrippy(res.data)
+            })
             .catch(err => console.log(err));
     };
 
     return (
 
-<div>
+        <div className="bg">
 
-        <Navbar />
+            <Navbar />
 
-        <h1>Saved Trips</h1>
+            <Jumbotron fluid style={{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${SeattleLakeUnionBoat})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                width: "auto",
+                height: "650px",
 
-        <h1>{trip.sail_date_id}</h1>
-        <h1>{trip.start_destination}</h1>
-        <h1>{trip.end_destination}</h1>
-        <h1>{trip.start_sail_date}</h1>
-        <h1>{trip.end_sail_date}</h1>
-        <h1>{trip.eta}</h1>
+            }} >
+                <Container>
+                <h1 style={{ textAlign: "center", color: "white", marginTop: "150px", fontFamily: 'Kaushan Script', fontSize: "75px", textShadow: "4px 4px 4px #000000" }}>Saved Trip</h1>
+                </Container>
+            </Jumbotron>
 
+            <Container id="singleResultTrip">
 
+                <h1 style={{ textAlign: "center", fontSize: "50px" }}>Saved Trips</h1>
+                <br></br>
+                <h2>Start Destination: {trip.start_destination}</h2>
+                <h2>End Destination: {trip.end_destination}</h2>
+                <h2>Start Sail Date: {trip.start_sail_date}</h2>
+                <h2> End Sailt Date: {trip.end_sail_date}</h2>
+                <h2>{trip.eta}</h2>
 
-        <Container fluid id="resultsdiv" style={{color: "white", textAlign: "center"}} >
-                <h1 style={{color: "black"}} >Trips</h1>
+            </Container>
+
+            <Container fluid id="resultsdiv" style={{ color: "white", textAlign: "center" }} >
+                <h1 style={{ color: "black" }} >Trips</h1>
                 {trip.length ? (
                     <List>
-                        {trip.map(trips => (
+                        {trippy.map(trips => (
                             <ListItem key={trips.sail_date_id}>
                                 <Link to={"/plannedtrip/" + trips.sail_date_id}>
                                     <strong>
                                         <ul>
-                                        Start: {trips.start_destination}
-                                        <br></br>
+                                            Start: {trips.start_destination}
+                                            <br></br>
                                          End: {trips.end_destination}
-                                         <br></br>
+                                            <br></br>
                                          Start Date: {trips.start_sail_date}
-                                         <br></br>
+                                            <br></br>
                                          End Date: {trips.end_sail_date}
-                                         <br></br>
+                                            <br></br>
                                          Eta: {trips.eta}
-                                         </ul>
+                                        </ul>
 
                                     </strong>
                                 </Link>

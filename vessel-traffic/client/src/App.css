@@ -85,3 +85,42 @@ th {
   font-family: Kaushan Script;
 }
 
+#singleResultTrip{ 
+  background-color: grey;
+  color: white;
+  font-size: 20px;
+  font-family: Kaushan Script;
+}
+
+.bg {
+  background-image:  url("https://image.freepik.com/free-vector/abstract-wave-background-soft-design_41084-386.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  height: auto;
+}
+
+footer {
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  
+}
+
+.social-media-icon {
+  display: inline-block;
+  list-style: none;
+  padding: 5px;
+}
+
+i {
+  font-size: 30px;
+  text-align: center;
+}
+
+i:hover {
+  color: purple;
+  transition: .7s;
+  transform: rotate(360deg);
+}

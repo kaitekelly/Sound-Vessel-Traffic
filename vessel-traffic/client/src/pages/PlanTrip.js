@@ -43,6 +43,30 @@ function PlanTrip() {
         endingDate: new Date()
     })
 
+    function handleFormSubmit(index) {
+        console.log(index);
+        waveHello();
+        setTimeout(() => {
+            console.log("saved")
+        }, 4000);
+        API.saveTrip({
+            start_destination: searchTerm.startLocation,
+            end_destination: searchTerm.endLocation,
+            start_sail_date: tripDates.startingDate,
+            end_sail_date: tripDates.endingDate
+        })
+        
+        setSearchTerm("")
+    }
+
+    function toasty() {
+        console.log("cheers to that")
+        toast("Your trip has been saved", {
+            position: toast.POSITION.TOP_CENTER
+        });
+
+    }
+
 
 
     const handleInputChange = (event, date) => {
@@ -99,25 +123,6 @@ function PlanTrip() {
             .catch(err => console.log(err));
     };
 
-    function toasty() {
-        console.log("cheers to that")
-        toast("Your trip has been saved", {
-            position: toast.POSITION.TOP_CENTER
-        });
-
-    }
-
-    function handleFormSubmit(index) {
-        console.log(index);
-        waveHello();
-        API.saveTrip({
-            start_destination: searchTerm.startLocation,
-            end_destination: searchTerm.endLocation,
-            start_sail_date: tripDates.startingDate,
-            end_sail_date: tripDates.endingDate
-        })
-        setSearchTerm("")
-    }
 
     function deleteTrip(id) {
         API.deleteTrip(id)
@@ -127,7 +132,7 @@ function PlanTrip() {
 
     return (
 
-        <div>
+        <div className="bg">
 
             <Navbar />
 
@@ -143,7 +148,7 @@ function PlanTrip() {
             }}>
                 <Container>
                     <h1 style={{ textAlign: "center", color: "white", marginTop: "150px", fontFamily: 'Kaushan Script', fontSize: "75px", textShadow: "4px 4px 4px #000000" }}>Plan your trip here</h1>
-        
+
                 </Container>
             </Jumbotron>
 
@@ -153,7 +158,7 @@ function PlanTrip() {
                 </Col>
 
                 <Col id="planTripRow">
-{/* 
+                    {/* 
                     <Button><Link
                         to="/plantrip"
                         className={window.location.pathname === "/plantrip" ? "nav-link active" : "nav-link"}
@@ -222,10 +227,10 @@ function PlanTrip() {
                             </Container>
 
 
-                            <Button onClick={(event) => { handleFormSubmit(event); toasty() }} variant="primary" type="submit">
+                            <Button onClick={(event) => { handleFormSubmit(event); toasty(); setTimeout() }} variant="primary" type="submit">
                                 Submit
 </Button>
-                            <ToastContainer autoClose={5000} />
+                            <ToastContainer autoClose={4000} />
                         </Form>
 
                     </Container>
@@ -278,13 +283,13 @@ function PlanTrip() {
                                             <br></br>
                                             {/* Start: {trips.start_destination} */}
                                             <br></br>
-                                 {/* End: {trips.end_destination} */}
+                                            {/* End: {trips.end_destination} */}
                                             <br></br>
                                  Start Date: {trips.start_sail_date}
                                             <br></br>
-                                 {/* End Date: {trips.end_sail_date} */}
+                                            {/* End Date: {trips.end_sail_date} */}
                                             <br></br>
-                                 {/* Eta: {trips.eta} */}
+                                            {/* Eta: {trips.eta} */}
                                         </ul>
                                     </strong>
                                 </Link>
