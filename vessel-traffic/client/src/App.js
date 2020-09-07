@@ -8,6 +8,7 @@ import SignUpPage from './pages/SignUp';
 import mapPage from './pages/Map';
 import PlanTrip from './pages/PlanTrip'
 import PlannedTrip from './pages/PlannedTrip'
+import Footer from './components/Footer/Footer'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         </Route>
         </div>
       </Router>
+      <Footer />
     </div>
   );
 }
