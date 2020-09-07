@@ -48,7 +48,7 @@
     "react-script-tag": "^1.1.2",
     "react-toastify": "^6.0.8",
     "react-typekit": "^1.1.4",
-    "sequelize": "^5.22.3",
+    "sequelize": "^6.3.5",
     "styled-components": "^5.1.1"
   }
 }

@@ -46,7 +46,7 @@ function PlannedTrip () {
         <h1>{trip.end_destination}</h1>
         <h1>{trip.start_sail_date}</h1>
         <h1>{trip.end_sail_date}</h1>
-        <h1>{trip.ship_length}</h1>
+        <h1>{trip.eta}</h1>
 
 
 

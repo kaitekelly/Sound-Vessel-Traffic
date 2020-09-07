@@ -51,10 +51,6 @@ th {
   text-align: center;
 }
 
-#marineTrafficMap {
-border: 2px solid black;
-}
-
 .fa-calendar-alt {
   font-size: 22px;
 }
@@ -66,3 +62,26 @@ border: 2px solid black;
 #planTripPageStyle {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))
 }
+
+#planTripRow {
+  border: 2px black solid;
+}
+
+.navbar {
+  background-color: blue;
+
+}
+
+#homePageLink {
+  color: white;
+  font-size: 35px;
+  font-family: Kaushan Script;
+  text-shadow: 4px 4px 4px #000000;
+}
+
+#navbarLink {
+  color: white;
+  font-size: 20px;
+  font-family: Kaushan Script;
+}
+

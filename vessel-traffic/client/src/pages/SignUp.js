@@ -3,10 +3,12 @@ import Navbar from '../components/Navbar/Navbar';
 // import Card from 'react-bootstrap/Card';
 // import Form from 'react-bootstrap/Form';
 // import Button from 'react-bootstrap/Button';
-// import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import logoImg from '../img/ship.png';
 import { Card, Logo, Form, Input, Button } from '../components/AuthForm';
 import API from "../utils/API";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUpPage() {
     // const [user, setUser] = useState("");
@@ -16,6 +18,8 @@ function SignUpPage() {
         email: "",
         password: ""
     })
+
+    const history = useHistory();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
@@ -40,7 +44,19 @@ function SignUpPage() {
                 password: ""
         
             });
+            setTimeout(() => {
+                history.push("/plantrip")
+            }, 4000);
     }
+
+    function toasty() {
+        console.log("User logged in!")
+        toast("Welcome to Sound Vessel Traffic!", {
+            position: toast.POSITION.TOP_CENTER
+        });
+    }
+
+    
 
     return (
         <div>
@@ -83,8 +99,9 @@ function SignUpPage() {
                         // onChange={handleInputChange}
                     />
                     <Button 
-                    onClick={handleFormSubmit}
+                    onClick={(event) => { handleFormSubmit(event); toasty(); setTimeout(event) }} variant="primary" type="submit"
                     >Sign Up</Button>
+                    <ToastContainer autoClose={4000} />
                 </Form>
                 {/* <Link to="/signup">Don't have an account?</Link> */}
             </Card>
