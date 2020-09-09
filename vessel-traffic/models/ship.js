@@ -1,10 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
+  let Trip = sequelize.define("Trip");
   var Ship = sequelize.define("Ship", {
 
     main_id: {
       type: DataTypes.INTEGER,
+      required: true,
       allowNull: false,
-      primaryKey: true
+      foreignKey: true
+      // primaryKey: true
     },
     ship_id: {
       type: DataTypes.INTEGER

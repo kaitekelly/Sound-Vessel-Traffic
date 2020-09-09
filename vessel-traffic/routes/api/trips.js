@@ -2,6 +2,7 @@ let db = require("../../models");
 const router = require("express").Router();
 //route to get all trips
 router.route("/").get(function(req, res) {
+    console.log("route to join tables")
     let query = {};
     if (req.query.trip_id) {
         query.TripId = req.query.trip_id;

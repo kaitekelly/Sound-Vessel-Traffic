@@ -33,4 +33,16 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+//Associations
+//Trips
+db.Trip.hasMany(db.Ship)
+
+//Ships : foreign key belongs to db Trip
+db.Ship.belongsTo(db.Trip);
+
+sequelize
+  .authenticate(
+
+  )
+
 module.exports = db;

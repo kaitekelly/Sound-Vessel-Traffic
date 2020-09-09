@@ -4,7 +4,8 @@ module.exports = function (sequelize, DataTypes) {
         sail_date_id: {
             type: DataTypes.INTEGER,
             allowNull: true,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         start_destination: {
             type: DataTypes.STRING
