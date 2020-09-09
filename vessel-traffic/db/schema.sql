@@ -13,7 +13,7 @@ CREATE TABLE ships (
     flag varchar(255) NOT NULL,
     ship_type_name varchar(255) NOT NULL,
     destination varchar(255),
-    eta char(255),
+    eta DATETIME NOT NULL,
     ship_length INT,
     ship_width INT,
 	PRIMARY KEY (main_id)
@@ -32,12 +32,9 @@ CREATE TABLE trips (
   sail_date_id INT NOT NULL AUTO_INCREMENT,
   start_destination VARCHAR(30) NOT NULL,
   end_destination VARCHAR(30) NOT NULL,
-  start_sail_date DATE NULL,
-  end_sail_date DATE NULL,
-  main_id int,
-  PRIMARY KEY (sail_date_id)  
-  FOREIGN KEY (main_id) references ships(main_id)
-
+  start_sail_date DATETIME NOT NULL references ships(eta) ON DELETE SET NULL ON UPDATE CASCADE,
+  end_sail_date DATETIME NOT NULL ,
+  PRIMARY KEY (sail_date_id)
 );
 
 CREATE TABLE `sessions` (

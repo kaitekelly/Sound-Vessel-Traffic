@@ -36,7 +36,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     eta: {
-      type: DataTypes.STRING
+      type: DataTypes.DATE
     },
     ship_length: {
       type: DataTypes.INTEGER
@@ -49,8 +49,7 @@ module.exports = function (sequelize, DataTypes) {
 
   Ship.associate = function (models) {
     Ship.belongsTo(models.Trip, {
-      foreignKey: 'main_id',
-      targetKey: 'main_id'
+      foreignKey: "main_id"
     }
     );
   }

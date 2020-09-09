@@ -19,8 +19,10 @@ import SeattleLakeUnionBoat from '../components/Images/Seattle-Lake-Union.JPG'
 
 function PlannedTrip() {
 
-    const [trip, setTrip] = useState({})
-    const [trippy, setTrippy] = useState([])
+    const [trip, setTrip] = useState([])
+    const [trippy, setTrippy] = useState([{}])
+    const [traffic, setTraffic] = useState([]);
+    const [trafficMatch, setTrafficMatch] = useState([]);
     const { id } = useParams()
 
 
@@ -28,16 +30,55 @@ function PlannedTrip() {
         loadTrips()
     }, [])
 
+    useEffect(() => {
+        loadTraffic()
+    }, [])
+
     function loadTrips() {
         API.getPlannedTrips(id)
             .then(res => {
                 console.log(res.data)
+                console.log(res.data.Ships)
                 setTrip(res.data)
-                setTrippy(res.data)
             })
             .catch(err => console.log(err));
     };
 
+    function loadTraffic() {
+        API.getTraffic()
+            .then(res => {
+                console.log(res)
+                setTraffic(res.data)
+            })
+            .catch(err => console.log(err));
+    };
+
+
+//     function checkETA() {
+// let matchedDates = traffic.filter(function(event){
+//     if(event.eta === trip.start_sail_date) {
+//        return "Hello"
+//     } 
+//     setTrafficMatch(matchedDates)
+// })
+// console.log(matchedDates)
+//     }
+
+    function checkSailingDate(event) {
+        const matchedDates = traffic.filter(traffics => {
+        // if this task has the same ID as the edited task
+          if (event.eta === trip.start_sail_date) {
+            //
+            return {...trafficMatch}
+          }
+          return traffics;
+        });
+        setTrafficMatch(matchedDates);
+        console.log(matchedDates)
+
+      }
+
+      
     return (
 
         <div className="bg">
@@ -65,9 +106,44 @@ function PlannedTrip() {
                 <h2>Start Destination: {trip.start_destination}</h2>
                 <h2>End Destination: {trip.end_destination}</h2>
                 <h2>Start Sail Date: {trip.start_sail_date}</h2>
-                <h2> End Sailt Date: {trip.end_sail_date}</h2>
-                <h2>{trip.eta}</h2>
+                <h2> End Sail Date: {trip.end_sail_date}</h2>
+                <br></br>
+                <h1 style={{ textAlign: "center", fontSize: "50px" }}>Ship Details</h1>
+{/* 
+                <h2>Ship Name: {trippy.ship_name}</h2>
+                <h2>Ship ETA: {trippy.eta}</h2> */}
 
+
+            </Container>
+
+            <Container fluid id="resultsdiv" style={{ color: "black", textAlign: "center" }} >
+                <h1 >Ships encountered</h1>
+                {trafficMatch.length ? (
+                    <List>
+                        {trafficMatch.map(traffics => (
+                            <ListItem key={traffics.id}>
+                                <Link to={"/plannedtrip/" + traffics.id}>
+                                    <strong>
+                                        <ul>
+                                        Ship Name: {traffics.ship_name}
+                                            <br></br>
+                                         Ship Type: {traffics.ship_type_name}
+                                            <br></br>
+                                         Flag: {traffics.flag}
+                                            <br></br>
+                                         Destination: {traffics.destination}
+                                            <br></br>
+                                         Eta: {traffics.eta}
+                                        </ul>
+                                    </strong>
+                                </Link>
+                                <br></br>
+                            </ListItem>
+                        ))}
+                    </List>
+                ) : (
+                        <h3>No Results to Display</h3>
+                    )}
             </Container>
 
             <Container fluid id="resultsdiv" style={{ color: "white", textAlign: "center" }} >
