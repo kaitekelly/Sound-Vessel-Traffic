@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  let Trip = sequelize.define("Trip");
+  // let Trip = sequelize.define("Trip");
   var Ship = sequelize.define("Ship", {
 
     main_id: {
