@@ -26,18 +26,28 @@ function UserLoginPage() {
         console.log("I'm logging in!")
         if (userObject.username && userObject.password) {
             API.getUser()
-            .then (result => {
-                console.log(result)
                 setUserObject("");
                 toasty();
                 setTimeout(() => {
                     history.push("/plantrip")
                 }, 2000);
-
-            })
-            
         }
     }
+
+
+    // function handleFormSubmit() {
+    //     console.log("I'm logging in!")
+    //     if (userObject.username && userObject.password) {
+    //         API.getUser()
+    //         .then (result => {
+    //             setUserObject("");
+    //             toasty();
+    //             setTimeout(() => {
+    //                 history.push("/plantrip")
+    //             }, 2000);
+    //         })
+    //     }
+    // }
 
     function toasty() {
         toast("Welcome to Sound Vessel Traffic!", {
@@ -63,7 +73,7 @@ function UserLoginPage() {
                         name="password"
                         onChange={handleInputChange}
                     />
-                    <Button type="submit" onClick={handleFormSubmit}>Sign in</Button>
+                    <Button type="submit" onClick={(event) => { handleFormSubmit(event) }}>Sign in</Button>
                     <ToastContainer autoClose={2000} />
                 </Form>
                 <Link to="/signup">Don't have an account?</Link>
