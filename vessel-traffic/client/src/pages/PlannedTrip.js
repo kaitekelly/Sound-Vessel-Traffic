@@ -143,7 +143,7 @@ function PlannedTrip() {
 
             <Container fluid id="resultsdiv" style={{ color: "black", textAlign: "center" }} >
                 <h1 >Ships encountered</h1>
-                {matchingDates.length ? (
+                {matchingDates.length > 0 ? (
                     <List>
                         {matchingDates.map((traffics, index) => {
                             console.log(traffics)
