@@ -12,7 +12,6 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
-    "http-proxy-middleware": "^1.0.5",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "react": "^16.13.1",
