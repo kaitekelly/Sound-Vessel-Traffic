@@ -104,7 +104,6 @@ function PlannedTrip() {
     })
    matchingDates = matchingDates.concat(matchedDates)
     console.log(matchedDates)
-    console.log("hello")
 
 
 
@@ -153,6 +152,8 @@ function PlannedTrip() {
                                     <strong>
                                         <ul>
                                             Ship Name: {traffics.ship_name}
+                                            <br></br>
+                                            Ship ID: {traffics.ship_id}
                                             <br></br>
                                          Ship Type: {traffics.ship_type_name}
                                             <br></br>

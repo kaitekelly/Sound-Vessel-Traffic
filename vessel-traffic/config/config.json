@@ -13,7 +13,7 @@
     "test": {
       "username": "root",
       "password": null,
-      "database": "database_test",
+      "database": "sound_vessel_traffic_db",
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"
@@ -21,7 +21,7 @@
     "production": {
       "username": "root",
       "password": null,
-      "database": "database_production",
+      "database": "sound_vessel_traffic_db",
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"
