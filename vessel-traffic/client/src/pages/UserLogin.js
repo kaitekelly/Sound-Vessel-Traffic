@@ -1,36 +1,23 @@
 import React, { useState } from "react";
 import Navbar from '../components/Navbar/Navbar';
-// import Card from 'react-bootstrap/Card';
-// import Form from 'react-bootstrap/Form';
-// import Button from 'react-bootstrap/Button';
-import { Link } from "react-router-dom";
-import logoImg from '../img/ship.png';
-// import LoginButton from '../components/LoginButton';
-// import LogoutButton from '../components/LogoutButton';
-import { Card, Logo, Form, Input, Button } from '../components/AuthForm';
+import { Link, useHistory } from "react-router-dom";
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import CheckButton from "react-validation/build/button";
+// import logoImg from '../img/ship.png';
+// import { Form, Input, Logo, Button } from '../components/AuthForm';
 import API from "../utils/API";
 import { ToastContainer, toast } from 'react-toastify';
-// import { useAuth0 } from '@auth0/auth0-react';
-// import Profile from '../components/Profile'
-// import SearchBoats from "../pages/SearchBoat";
 import 'react-toastify/dist/ReactToastify.css';
-
+import { Card } from "react-bootstrap"
 
 function UserLoginPage() {
-    // const { loginWithRedirect, isAuthenticated } = useAuth0();
-    // const { logout } = useAuth0();
     const [userObject, setUserObject] = useState({
-        email: "",
+        username: "",
         password: ""
     })
 
-
-    function toasty() {
-        console.log("User logged in!")
-        toast("Welcome to Sound Vessel Traffic!", {
-            position: toast.POSITION.TOP_CENTER
-        });
-    }
+    const history = useHistory();
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
@@ -38,25 +25,40 @@ function UserLoginPage() {
         console.log(value)
     }
 
-    // function handleFormSubmit(id) {
-    //     console.log("I'm logging in!")
-    //     if (userObject.email && userObject.password) {
-    //         API.getUser(id)
-    //         // .then(res => redirect)
-    //         setUserObject("")
-    //     }
-    // }
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        console.log("I'm logging in!")
+        if (userObject.username && userObject.password) {
+            API.getUser()
+            .then (result => {
+                console.log(result)
+                setUserObject("");
+                toasty();
+                setTimeout(() => {
+                    history.push("/plantrip")
+                }, 2000);
+
+            })
+            
+        }
+    }
+
+    function toasty() {
+        toast("Welcome to Sound Vessel Traffic!", {
+            position: toast.POSITION.TOP_CENTER
+        });
+    }
 
     return (
         <div>
             <Navbar />
             <Card>
-                <Logo src={logoImg} />
-                <Form>
+                {/* <Logo src={logoImg} /> */}
+                <Form method="post">
                     <Input
                         type="email"
                         placeholder="email"
-                        name="email"
+                        name="username"
                         onChange={handleInputChange}
                     />
                     <Input
@@ -65,38 +67,11 @@ function UserLoginPage() {
                         name="password"
                         onChange={handleInputChange}
                     />
-                    <Button 
-                    // onClick={handleFormSubmit}
-                    >Sign in</Button>
-                    {/* <LoginButton >Sign In</LoginButton> */}
-                    {/* <LogoutButton >Sign Out</LogoutButton> */}
-                    {/* <Profile /> */}
+                    <CheckButton type="submit" onClick={handleFormSubmit}>Sign in</CheckButton>
+                    <ToastContainer autoClose={2000} />
                 </Form>
                 <Link to="/signup">Don't have an account?</Link>
             </Card>
-
-
-            {/* <h1>Hello Sailor. Log In Here.</h1>
-
-            <Card style={{ boxSizing: "border-box", maxWidth: "500px", textAlign: "center" }}>
-                <Form>
-                    <Form.Group controlId="formGroupEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
-                    </Form.Group>
-                    <Form.Group controlId="formGroupPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
-                    </Form.Group>
-                    <Button>Sign In</Button>
-                    <br></br>
-                    <Link to="/map">Already have an account?</Link>
-                </Form>
-
-            </Card> */}
-
-            {/* <SearchBoats /> */}
-
         </div>
     )
 }

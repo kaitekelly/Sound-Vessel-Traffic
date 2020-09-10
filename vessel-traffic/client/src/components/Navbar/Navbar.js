@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <Link id="homePageLink" className="navbar-brand" to="/">
-      <i class="fas fa-anchor"></i>
+      <i className="fas fa-anchor"></i>
         Sound Vessel Traffic
       </Link>
       <div>

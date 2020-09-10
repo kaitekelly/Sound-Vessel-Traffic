@@ -4,6 +4,7 @@ module.exports = function (sequelize, DataTypes) {
     main_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      primaryKey: true
     },
     ship_id: {
       type: DataTypes.INTEGER
