@@ -104,6 +104,7 @@ function PlannedTrip() {
     })
    matchingDates = matchingDates.concat(matchedDates)
     console.log(matchedDates)
+    console.log("hello")
 
 
 
