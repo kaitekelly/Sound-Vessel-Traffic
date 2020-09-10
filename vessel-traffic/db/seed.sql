@@ -45,5 +45,5 @@ VALUE (1, "Vashon Island", "Kayak Point", "2020-09-12", "2020-09-12"),
 (2, "Tacoma", "Bremerton", "2020-09-14", "2020-09-14"),
 (3, "West Seattle", "Port Townsend", "2020-09-15", "2020-09-15")
 
-INSERT INTO users (user_id, first_name, last_name, email, password)
-VALUE (1, "Emily", "Baker", "emily.baker@email.com", "123456")
+INSERT INTO users (user_id, first_name, last_name, username, password)
+VALUE (1, "Emily", "Baker", "emily.baker@email.com", "123456");

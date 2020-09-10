@@ -34,8 +34,8 @@ export default {
         return axios.post("/api/users", userInfo);
       },
 
-      // getUser: function(userLogin) {
-      //   console.log("User logging in API.js")
-      //   return axios.get("/api/users", userLogin);
-      // }
+      getUser: function() {
+        console.log("User logging in API.js")
+        return axios.post("/api/userLogin");
+      }
 };
