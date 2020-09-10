@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import Navbar from '../components/Navbar/Navbar';
 import { Link, useHistory } from "react-router-dom";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
-// import logoImg from '../img/ship.png';
-// import { Form, Input, Logo, Button } from '../components/AuthForm';
+import logoImg from '../img/ship.png';
 import API from "../utils/API";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Card } from "react-bootstrap"
+import { Image, Container, Form, Button } from "react-bootstrap"
 
 function UserLoginPage() {
     const [userObject, setUserObject] = useState({
@@ -52,26 +48,26 @@ function UserLoginPage() {
     return (
         <div>
             <Navbar />
-            <Card>
-                {/* <Logo src={logoImg} /> */}
+            <Container style={{ width: '25rem', textAlign: 'center'}}>
+            <Image src={logoImg} alt="My logo" style={{justifyContent: 'center'}} />
                 <Form method="post">
-                    <Input
+                    <Form.Control
                         type="email"
                         placeholder="email"
                         name="username"
                         onChange={handleInputChange}
                     />
-                    <Input
+                    <Form.Control
                         type="password"
                         placeholder="password"
                         name="password"
                         onChange={handleInputChange}
                     />
-                    <CheckButton type="submit" onClick={handleFormSubmit}>Sign in</CheckButton>
+                    <Button type="submit" onClick={handleFormSubmit}>Sign in</Button>
                     <ToastContainer autoClose={2000} />
                 </Form>
                 <Link to="/signup">Don't have an account?</Link>
-            </Card>
+            </Container>
         </div>
     )
 }
