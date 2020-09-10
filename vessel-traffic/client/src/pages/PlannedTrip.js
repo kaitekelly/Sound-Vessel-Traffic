@@ -15,7 +15,8 @@ import ImageBackground from "../components/Images/Seattle-Boats2.JPG";
 import API from "../utils/API";
 import { List, ListItem } from "../components/List/List"
 import { Link, useParams } from "react-router-dom";
-import SeattleLakeUnionBoat from '../components/Images/Seattle-Lake-Union.JPG'
+import SeattleLakeUnionBoat from '../components/Images/Seattle-Lake-Union.JPG';
+import Modal from 'react-bootstrap/Modal'
 
 function PlannedTrip() {
 
@@ -24,7 +25,10 @@ function PlannedTrip() {
     const [traffic, setTraffic] = useState([]);
     const [trafficMatch, setTrafficMatch] = useState([{}]);
     const { id } = useParams()
-
+    const [show, setShow] = useState(false);
+    const handleClose = () => setModalId("");
+    const handleShow = () => setShow(true);
+    const [modalId, setModalId] = useState("");
 
     useEffect(() => {
         loadTrips()
@@ -102,7 +106,7 @@ function PlannedTrip() {
         }
 
     })
-   matchingDates = matchingDates.concat(matchedDates)
+    matchingDates = matchingDates.concat(matchedDates)
     console.log(matchedDates)
 
 
@@ -136,7 +140,8 @@ function PlannedTrip() {
                 <h2>Start Sail Date: {trip.start_sail_date && trip.start_sail_date.split("T")[0]}</h2>
                 <h2> End Sail Date: {trip.end_sail_date && trip.end_sail_date.split("T")[0]}</h2>
                 <br></br>
-                <h1 style={{ textAlign: "center", fontSize: "50px" }}>Ship Details</h1>
+                <h1 style={{ textAlign: "center", fontSize: "50px" }}><Link to="/plantrip">← Back to Plan a Trip</Link>
+</h1>
 
 
             </Container>
@@ -147,31 +152,60 @@ function PlannedTrip() {
                     <List>
                         {matchingDates.map((traffics, index) => {
                             console.log(traffics)
-                            return (<ListItem key={index}>
-                                <Link to={"/plannedtrip/" + traffics.id}>
-                                    <strong>
-                                        <ul>
-                                            Ship Name: {traffics.ship_name}
-                                            <br></br>
+                            return (<ListItem key={traffics.ship_id} value={traffics}>
+                                <strong>
+                                    <Button variant="primary" onClick={() => setModalId(`modal${index}`)}>
+                                        Ship Name: {traffics.ship_name}
+                                    </Button>
+
+                                    <ul>
+                                        <Modal size="lg" show={modalId === `modal${index}`} onHide={handleClose}>
+                                            <Modal.Header closeButton>
+                                                <Modal.Title>Ship Name: {traffics.ship_name}</Modal.Title>
+                                            </Modal.Header>
+                                            <Modal.Body>
+                                                Ship Name: {traffics.ship_name}
+                                                <br></br>
                                             Ship ID: {traffics.ship_id}
-                                            <br></br>
+                                                <br></br>
                                          Ship Type: {traffics.ship_type_name}
-                                            <br></br>
+                                                <br></br>
                                          Flag: {traffics.flag}
-                                            <br></br>
+                                                <br></br>
                                          Destination: {traffics.destination}
-                                            <br></br>
+                                                <br></br>
                                          Eta: {traffics.eta && traffics.eta.split("T")[0]}
-                                        </ul>
-                                    </strong>
-                                </Link>
+                                                <br></br>
+                                                <img style={{ width: "750px", height: "750px" }} src={traffics.ship_image} alt="shipImage" />
+                                            </Modal.Body>
+                                            <Modal.Footer>
+                                                <Button variant="secondary" onClick={handleClose}>
+                                                    Close
+                                            </Button>
+                                            </Modal.Footer>
+                                        </Modal>
+                                        {/* Ship Name: {traffics.ship_name}
+                                        <br></br>
+                                            Ship ID: {traffics.ship_id}
+                                        <br></br>
+                                         Ship Type: {traffics.ship_type_name}
+                                        <br></br>
+                                         Flag: {traffics.flag}
+                                        <br></br>
+                                         Destination: {traffics.destination}
+                                        <br></br>
+                                         Eta: {traffics.eta && traffics.eta.split("T")[0]} */}
+                                    </ul>
+                                </strong>
                                 <br></br>
                             </ListItem>
-                        )})}
+                            )
+                        })}
                     </List>
                 ) : (
                         <h3>No Results to Display</h3>
                     )}
+
             </Container>
 
             {/* <Container fluid id="resultsdiv" style={{ color: "white", textAlign: "center" }} >

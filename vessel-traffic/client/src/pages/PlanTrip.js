@@ -55,7 +55,7 @@ function PlanTrip() {
             start_sail_date: tripDates.startingDate,
             end_sail_date: tripDates.endingDate
         })
-        
+
         setSearchTerm("")
     }
 
@@ -87,7 +87,7 @@ function PlanTrip() {
         console.log(date)
     }
 
-    
+
     const handleEndChangeDate = (date) => {
         setTripDates({
             ...tripDates,
@@ -200,12 +200,6 @@ function PlanTrip() {
                                             className="datePicker"
                                             selected={tripDates.startingDate}
                                             onChange={handleStartChangeDate}
-                                            // selectsStart
-                                            // startDate={startDate}
-                                            // endDate={endDate}
-                                            showTimeSelect
-                                            timeFormat="HH:mm"
-                                            timeIntervals={20}
                                             timeCaption="time"
                                             name="startingDate"
                                             dateFormat="MM/dd/yyyy"
@@ -217,14 +211,6 @@ function PlanTrip() {
                                             className="datePicker"
                                             selected={tripDates.endingDate}
                                             onChange={handleEndChangeDate}
-                                            // selectsEnd
-                                            // startDate={startDate}
-                                            // endDate={endDate}
-                                            // minDate={startDate}
-                                            showTimeSelect
-                                            timeFormat="HH:mm"
-                                            timeIntervals={20}
-                                            timeCaption="time"
                                             name="endingDate"
                                             dateFormat="MM/dd/yyyy"
                                         />
@@ -286,25 +272,19 @@ function PlanTrip() {
                     <List>
                         {trip.map(trips => (
                             <ListItem key={trips.sail_date_id}>
-                                <Link to={"/plannedtrip/" + trips.sail_date_id}>
+
                                     <strong>
                                         <ul>
-                                            {/* ID: {trips.sail_date_id} */}
-                                            <br></br>
-                                            {/* Start: {trips.start_destination} */}
-                                            <br></br>
-                                            {/* End: {trips.end_destination} */}
-                                            <br></br>
-                                 Trip Start Date: {trips.start_sail_date.split("T")[0]}
-                                            <br></br>
-                                            {/* End Date: {trips.end_sail_date} */}
-                                            <br></br>
-                                            {/* Eta: {trips.eta} */}
+                                        <h2  style={{ textAlign: "center", color: "black", fontFamily: 'Kaushan Script', textShadow: "4px 4px 4px #000000" }}>Trip Start Date:</h2>
+                                        <Link to={"/plannedtrip/" + trips.sail_date_id}>
+
+                                                <Button> {trips.start_sail_date.split("T")[0]}</Button>
+                                                </Link>
+
                                         </ul>
                                     </strong>
-                                </Link>
                                 <br></br>
-                                <Button onClick={() => deleteTrip(trips.sail_date_id)}>Delete Trip</Button>
+                                <Button  onClick={() => deleteTrip(trips.sail_date_id)}><span style={{color:"red"}}>X</span> || Delete Trip || <span style={{color:"red"}}>X</span></Button>
                             </ListItem>
                         ))}
                     </List>
