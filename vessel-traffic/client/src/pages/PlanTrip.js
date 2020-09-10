@@ -79,13 +79,23 @@ function PlanTrip() {
 
     }
 
-    const handleChangeDate = (date) => {
+    const handleStartChangeDate = (date) => {
         setTripDates({
+            ...tripDates,
             startingDate: date,
+        })
+        console.log(date)
+    }
+
+    
+    const handleEndChangeDate = (date) => {
+        setTripDates({
+            ...tripDates,
             endingDate: date
         })
         console.log(date)
     }
+
 
     const onSubmitHandler = (event) => {
         // Prevent browser refreshing after form submission
@@ -189,7 +199,7 @@ function PlanTrip() {
                                         <DatePicker
                                             className="datePicker"
                                             selected={tripDates.startingDate}
-                                            onChange={handleChangeDate}
+                                            onChange={handleStartChangeDate}
                                             // selectsStart
                                             // startDate={startDate}
                                             // endDate={endDate}
@@ -206,7 +216,7 @@ function PlanTrip() {
                                         <DatePicker
                                             className="datePicker"
                                             selected={tripDates.endingDate}
-                                            onChange={handleChangeDate}
+                                            onChange={handleEndChangeDate}
                                             // selectsEnd
                                             // startDate={startDate}
                                             // endDate={endDate}
@@ -285,7 +295,7 @@ function PlanTrip() {
                                             <br></br>
                                             {/* End: {trips.end_destination} */}
                                             <br></br>
-                                 Start Date: {trips.start_sail_date}
+                                 Trip Start Date: {trips.start_sail_date.split("T")[0]}
                                             <br></br>
                                             {/* End Date: {trips.end_sail_date} */}
                                             <br></br>
