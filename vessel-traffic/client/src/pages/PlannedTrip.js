@@ -22,7 +22,7 @@ function PlannedTrip() {
     const [trip, setTrip] = useState([])
     const [trippy, setTrippy] = useState([{}])
     const [traffic, setTraffic] = useState([]);
-    const [trafficMatch, setTrafficMatch] = useState([]);
+    const [trafficMatch, setTrafficMatch] = useState([{}]);
     const { id } = useParams()
 
 
@@ -38,7 +38,6 @@ function PlannedTrip() {
         API.getPlannedTrips(id)
             .then(res => {
                 console.log(res.data)
-                console.log(res.data.Ships)
                 setTrip(res.data)
             })
             .catch(err => console.log(err));
@@ -47,38 +46,67 @@ function PlannedTrip() {
     function loadTraffic() {
         API.getTraffic()
             .then(res => {
-                console.log(res)
+                console.log(res.data)
                 setTraffic(res.data)
+                setTrafficMatch(res.data)
+                console.log(trafficMatch)
             })
             .catch(err => console.log(err));
+
+        // let matchingDates =[]
+
+        // let matchedDates = trafficMatch.filter(function(event){
+        //     if(trafficMatch.eta == trip.start_sail_date) {
+        //         return true
+        //     } 
+        //     // setTrafficMatch(matchedDates)
+        //     matchingDates.push(matchedDates)
+
+        // })
+        // console.log(matchingDates)
     };
 
 
-//     function checkETA() {
-// let matchedDates = traffic.filter(function(event){
-//     if(event.eta === trip.start_sail_date) {
-//        return "Hello"
-//     } 
-//     setTrafficMatch(matchedDates)
-// })
-// console.log(matchedDates)
-//     }
+    //     function checkETA() {
+    //         let matchingDates =[]
 
-    function checkSailingDate(event) {
-        const matchedDates = traffic.filter(traffics => {
-        // if this task has the same ID as the edited task
-          if (event.eta === trip.start_sail_date) {
-            //
-            return {...trafficMatch}
-          }
-          return traffics;
-        });
-        setTrafficMatch(matchedDates);
-        console.log(matchedDates)
+    // let matchedDates = trafficMatch.filter(function(event){
+    //     if(trafficMatch.eta == trip.start_sail_date) {
+    //         return true
+    //     } 
+    //     // setTrafficMatch(matchedDates)
+    //     matchingDates.push(matchedDates)
 
-      }
+    // })
+    // console.log(trafficMatch)
+    //     }
 
-      
+    // function checkSailingDate(event) {
+    //     const matchedDates = traffic.filter(traffics => {
+    //     // if this task has the same ID as the edited task
+    //       if (event.eta === trip.start_sail_date) {
+    //         //
+    //         return {...trafficMatch}
+    //       }
+    //       return traffics;
+    //     });
+    //     setTrafficMatch(matchedDates);
+    //     console.log(matchedDates)
+
+    //   }
+    let matchingDates = []
+
+    let matchedDates = trafficMatch.filter(function (event) {
+        if (event.eta === trip.start_sail_date) {
+            return true
+        }
+
+    })
+   matchingDates = matchingDates.concat(matchedDates)
+    console.log(matchedDates)
+
+
+
     return (
 
         <div className="bg">
@@ -95,7 +123,7 @@ function PlannedTrip() {
 
             }} >
                 <Container>
-                <h1 style={{ textAlign: "center", color: "white", marginTop: "150px", fontFamily: 'Kaushan Script', fontSize: "75px", textShadow: "4px 4px 4px #000000" }}>Saved Trip</h1>
+                    <h1 style={{ textAlign: "center", color: "white", marginTop: "150px", fontFamily: 'Kaushan Script', fontSize: "75px", textShadow: "4px 4px 4px #000000" }}>Saved Trip</h1>
                 </Container>
             </Jumbotron>
 
@@ -105,27 +133,25 @@ function PlannedTrip() {
                 <br></br>
                 <h2>Start Destination: {trip.start_destination}</h2>
                 <h2>End Destination: {trip.end_destination}</h2>
-                <h2>Start Sail Date: {trip.start_sail_date}</h2>
-                <h2> End Sail Date: {trip.end_sail_date}</h2>
+                <h2>Start Sail Date: {trip.start_sail_date && trip.start_sail_date.split("T")[0]}</h2>
+                <h2> End Sail Date: {trip.end_sail_date && trip.end_sail_date.split("T")[0]}</h2>
                 <br></br>
                 <h1 style={{ textAlign: "center", fontSize: "50px" }}>Ship Details</h1>
-{/* 
-                <h2>Ship Name: {trippy.ship_name}</h2>
-                <h2>Ship ETA: {trippy.eta}</h2> */}
 
 
             </Container>
 
             <Container fluid id="resultsdiv" style={{ color: "black", textAlign: "center" }} >
                 <h1 >Ships encountered</h1>
-                {trafficMatch.length ? (
+                {matchingDates.length ? (
                     <List>
-                        {trafficMatch.map(traffics => (
-                            <ListItem key={traffics.id}>
+                        {matchingDates.map((traffics, index) => {
+                            console.log(traffics)
+                            return (<ListItem key={index}>
                                 <Link to={"/plannedtrip/" + traffics.id}>
                                     <strong>
                                         <ul>
-                                        Ship Name: {traffics.ship_name}
+                                            Ship Name: {traffics.ship_name}
                                             <br></br>
                                          Ship Type: {traffics.ship_type_name}
                                             <br></br>
@@ -133,20 +159,20 @@ function PlannedTrip() {
                                             <br></br>
                                          Destination: {traffics.destination}
                                             <br></br>
-                                         Eta: {traffics.eta}
+                                         Eta: {traffics.eta && traffics.eta.split("T")[0]}
                                         </ul>
                                     </strong>
                                 </Link>
                                 <br></br>
                             </ListItem>
-                        ))}
+                        )})}
                     </List>
                 ) : (
                         <h3>No Results to Display</h3>
                     )}
             </Container>
 
-            <Container fluid id="resultsdiv" style={{ color: "white", textAlign: "center" }} >
+            {/* <Container fluid id="resultsdiv" style={{ color: "white", textAlign: "center" }} >
                 <h1 style={{ color: "black" }} >Trips</h1>
                 {trip.length ? (
                     <List>
@@ -169,14 +195,14 @@ function PlannedTrip() {
                                     </strong>
                                 </Link>
                                 <br></br>
-                                {/* <DeleteBtn onClick={() => deleteBook(traffics.sail_date_id)} /> */}
+                                <DeleteBtn onClick={() => deleteBook(traffics.sail_date_id)} />
                             </ListItem>
                         ))}
                     </List>
                 ) : (
                         <h3>No Results to Display</h3>
                     )}
-            </Container>
+            </Container> */}
 
         </div>
     )
