@@ -1,45 +1,68 @@
-# Sound-Vessel-Traffic
-⚓️ An application for pleasure craft to look up ETA's of larger cargo ships to avoid crossing paths in shipping lanes. ⛵️
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Link to Deployed Site:
-💻 
+## Available Scripts
 
+In the project directory, you can run:
 
-# Link to Repo:
-🚢 https://github.com/kaitekelly/Sound-Vessel-Traffic 
+### `npm start`
 
-# User Story:
-🚤 As a small pleasure craft sailor on the Puget Sound, 
-I would like an application to tell me when large cargo and tanker ships are entering and exiting the shipping lanes in and out of port, so that I can avoid them when I’m sailing.
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-# Description:
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-A full stack react application that uses a mysql express routes server to save and delete boating trips and the marine traffic api to look up nearby ships and their routes. 
+### `npm test`
 
-# Installation: 
-💾 In the command line of the working directory, install the following NPM packages: authO, axios, body-parser, dotenv, express, if-env, mysql, toastify, sequelize, styled-components and all of the React dependencies listed in the technologies section of the contributions. 
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-# Usage: 
-Enter site and either login or sign up for a new account. Once signed in users can view local maritine activity through the Marine Traffic app map. The map details all maritine traffic in the map area. If a user would like to plan a trip and see a list of ships and boats they may cross paths with, click the plan trip page. On that page, enter the details of your trip including starting point and destination as well as start and end dates. When the submit button is hit, the trip will be saved to the mysql database and the search will return the results of which ships they will encounter on their trip.  
+### `npm run build`
 
-# Screenshot of application in use:
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-# Contributions: 
-Contributors:
-Jesse Audije, Kathryn Teall, and Kaite Kelly
+### `npm run eject`
 
-Technology used: React, Node.js, Javascript, HTML, CSS, MySQL, 
-NPM packages: Express, Sequelize, Axios, body-parser, dot-env, if-env, mongoose, mysql, mysql2, toastify
-React NPM packages: react, react-bootstrap, react-dom, reactstrap, react-async, script-loader, react-calendar-, react-datepicker, react-helmet, react-iframe, react-inline-script, react-script-tag, react-toastify, and react-typekit.
-API's: Marine Traffic API 
-Other tools: MySQL Workbench
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-# Tests: 
-⚙️ No tests have been performed on this application. 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-# License: 
-🖇 ISC
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
