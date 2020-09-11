@@ -36,10 +36,6 @@ module.exports = function (sequelize, DataTypes) {
     },
     eta: {
       type: DataTypes.DATE,
-      references: {
-        model: "Trip",
-        key: "start_sail_date"
-    }
     },
     ship_length: {
       type: DataTypes.INTEGER
