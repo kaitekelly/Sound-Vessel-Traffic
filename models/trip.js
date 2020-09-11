@@ -13,11 +13,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         start_sail_date: {
             type: DataTypes.DATE,
-            references: {
-                model: "Ship",
-                key: "eta"
-            },
-            onDelete: 'cascade'
+            // references: {
+            //     model: "Ship",
+            //     key: "eta"
+            // },
+            // onDelete: 'cascade'
         },
         end_sail_date: {
             type: DataTypes.DATE
