@@ -25,30 +25,29 @@ function PlanTrip() {
     const [trip, setTrip] = useState([])
 
     const [searchTerm, setSearchTerm] = useState({
-        startLocation: "",
-        endLocation: "",
-        // startingDate: new Date(),
-        // endingDate: new Date()
+        start_destination: "",
+        end_destination: "",
     })
 
     const [tripDates, setTripDates] = useState({
-        startingDate: new Date(),
-        endingDate: new Date()
+        start_sail_date: new Date(),
+        end_sail_date: new Date()
     })
 
-    function handleFormSubmit(index) {
-        console.log(index);
+    function handleFormSubmit(event) {
         waveHello();
+        API.saveTrip({
+            start_destination: searchTerm.start_destination,
+            end_destination: searchTerm.end_destination,
+            start_sail_date: tripDates.start_sail_date,
+            end_sail_date: tripDates.end_sail_date
+        })
+        console.log(searchTerm);
+        console.log(tripDates)
+        setSearchTerm("");
         setTimeout(() => {
             console.log("saved")
         }, 4000);
-        API.saveTrip({
-            start_destination: searchTerm.startLocation,
-            end_destination: searchTerm.endLocation,
-            start_sail_date: tripDates.startingDate,
-            end_sail_date: tripDates.endingDate
-        })
-        setSearchTerm("")
     }
 
     function toasty() {
@@ -60,9 +59,9 @@ function PlanTrip() {
 
     const handleInputChange = (event, date) => {
         event.preventDefault();
-        const value = event.target.value
+        const { name, value } = event.target
         setSearchTerm({
-            ...searchTerm, [event.target.name]: value
+            ...searchTerm, [name]: value
         });
         console.log(value)
     }
@@ -70,7 +69,7 @@ function PlanTrip() {
     const handleStartChangeDate = (date) => {
         setTripDates({
             ...tripDates,
-            startingDate: date,
+            start_sail_date: date,
         })
         console.log(date)
     }
@@ -78,7 +77,7 @@ function PlanTrip() {
     const handleEndChangeDate = (date) => {
         setTripDates({
             ...tripDates,
-            endingDate: date
+            end_sail_date: date
         })
         console.log(date)
     }
@@ -160,11 +159,11 @@ function PlanTrip() {
                         <Form >
                             <Form.Group controlId="formBasicEmail" >
                                 <Form.Label>Start</Form.Label>
-                                <Form.Control type="text" placeholder="Start location" value={searchTerm.startLocation} name="startLocation" onChange={handleInputChange} style={{ borderRadius: "10px" }} />
+                                <Form.Control type="text" placeholder="Start location" value={searchTerm.start_destination} name="start_destination" onChange={handleInputChange} style={{ borderRadius: "10px" }} />
                             </Form.Group>
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>End</Form.Label>
-                                <Form.Control type="text" placeholder="End location" value={searchTerm.endLocation} name="endLocation" onChange={handleInputChange} style={{ borderRadius: "10px" }} />
+                                <Form.Control type="text" placeholder="End location" value={searchTerm.end_destination} name="end_destination" onChange={handleInputChange} style={{ borderRadius: "10px" }} />
                             </Form.Group>
                             <Container>
                                 <br></br>
@@ -173,10 +172,10 @@ function PlanTrip() {
                                         <i className="far fa-calendar-alt"></i>
                                         <DatePicker
                                             className="datePicker"
-                                            selected={tripDates.startingDate}
+                                            selected={tripDates.start_sail_date}
                                             onChange={handleStartChangeDate}
                                             timeCaption="time"
-                                            name="startingDate"
+                                            name="start_sail_date"
                                             dateFormat="MM/dd/yyyy"
                                         />
                                     </Col>
@@ -184,9 +183,9 @@ function PlanTrip() {
                                         <i className="far fa-calendar-alt"></i>
                                         <DatePicker
                                             className="datePicker"
-                                            selected={tripDates.endingDate}
+                                            selected={tripDates.end_sail_date}
                                             onChange={handleEndChangeDate}
-                                            name="endingDate"
+                                            name="end_sail_date"
                                             dateFormat="MM/dd/yyyy"
                                         />
                                     </Col>
@@ -196,7 +195,7 @@ function PlanTrip() {
                                     <Form.Check type="checkbox" label="Save Trip" />
                                 </Form.Group>
                             </Container>
-                            <Button onClick={(event) => { handleFormSubmit(event); toasty(); setTimeout() }} variant="primary" type="submit">
+                            <Button onClick={(event) => { handleFormSubmit(event); toasty(); setTimeout(event) }} variant="primary" type="submit">
                                 Submit
                             </Button>
                             <ToastContainer autoClose={4000} />
