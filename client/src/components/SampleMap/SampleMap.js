@@ -1,12 +1,8 @@
 import React from "react";
-import VesselDummyData from "../../utils/VesselDummyData";
-import Iframe from 'react-iframe'
-import ScriptTag from 'react-script-tag';
 
 let SampleMap =
     
     function() {
-
         let zoom ='9';
         let width='100%';
         let height='650';
@@ -23,7 +19,6 @@ let SampleMap =
         let vtypes = '';
         let showmenu ='';
         let remember = '';
-
 
 	if ("https:" == document.location.protocol) {
 		/* secure */
@@ -54,11 +49,6 @@ let SampleMap =
 			<iframe name="marinetraffic" id="marinetraffic" width={window.width ||1000}  height={window.height || 750}  scrolling="no"  frameborder= {((window.border === undefined) ? '0' : border)}  src= {src + ((window.language === undefined) ? 'en' : language) + '/ais/embed' + '/zoom:' + ((window.zoom === undefined) ? '12' : zoom) + '/centery:' + ((window.latitude === undefined) ? '47.621195' : latitude) + '/centerx:' + ((window.longitude === undefined) ? '-122.36435' : longitude) + '/maptype:' + ((window.maptype === undefined) ? '4' : maptype) + '/shownames:' + ((window.shownames === undefined) ? 'false' : shownames) + '/mmsi:' + ((window.trackvessel === undefined) ? '0' : trackvessel) + '/shipid:' + ((window.trackshipid === undefined) ? '0' : trackshipid) + '/fleet:' + ((window.fleet === undefined) ? '' : fleet) + '/fleet_id:' + ((window.fleet_id === undefined) ? '' : fleet_id) + '/vtypes:' + ((window.vtypes === undefined) ? '' : vtypes) + '/showmenu:' + ((window.showmenu === undefined) ? '' : showmenu) + '/remember:' + ((window.remember === undefined) ? 'false' : remember)} > </iframe>
 		);
 	// }
-
-
-
 }
-
-
 
 export default SampleMap

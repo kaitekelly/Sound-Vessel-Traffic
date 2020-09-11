@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Navbar from '../components/Navbar/Navbar';
-import FormCheck from 'react-bootstrap/FormCheck';
-import FormControl from 'react-bootstrap/FormControl';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Calendar from 'react-calendar';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col'
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import ImageBackground from "../components/Images/Seattle-Boats2.JPG";
 import API from "../utils/API";
 import { List, ListItem } from "../components/List/List"
 import { Link, useParams } from "react-router-dom";

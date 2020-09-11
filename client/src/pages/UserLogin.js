@@ -17,7 +17,7 @@ function UserLoginPage() {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
-        setUserObject({...userObject, [name]: value})
+        setUserObject({ ...userObject, [name]: value })
         console.log(value)
     }
 
@@ -26,28 +26,13 @@ function UserLoginPage() {
         console.log("I'm logging in!")
         if (userObject.username && userObject.password) {
             API.getUser()
-                setUserObject("");
-                toasty();
-                setTimeout(() => {
-                    history.push("/plantrip")
-                }, 2000);
+            setUserObject("");
+            toasty();
+            setTimeout(() => {
+                history.push("/plantrip")
+            }, 2000);
         }
     }
-
-
-    // function handleFormSubmit() {
-    //     console.log("I'm logging in!")
-    //     if (userObject.username && userObject.password) {
-    //         API.getUser()
-    //         .then (result => {
-    //             setUserObject("");
-    //             toasty();
-    //             setTimeout(() => {
-    //                 history.push("/plantrip")
-    //             }, 2000);
-    //         })
-    //     }
-    // }
 
     function toasty() {
         toast("Welcome to Sound Vessel Traffic!", {
@@ -58,26 +43,28 @@ function UserLoginPage() {
     return (
         <div>
             <Navbar />
-            <Container style={{ width: '25rem', textAlign: 'center'}}>
-            <Image src={logoImg} alt="My logo" style={{justifyContent: 'center'}} />
-                <Form method="post">
+            <Container style={{ width: '25rem', textAlign: 'center', marginTop: '10px', marginBottom: '20px' }}>
+                <Image src={logoImg} alt="My logo" style={{ justifyContent: 'center' }} />
+                <Form method="post" className="shadow p-3 mb-5 bg-white rounded" >
                     <Form.Control
                         type="email"
                         placeholder="email"
                         name="username"
                         onChange={handleInputChange}
+                        style={{ marginTop: '10px' }}
                     />
                     <Form.Control
                         type="password"
                         placeholder="password"
                         name="password"
                         onChange={handleInputChange}
+                        style={{ marginTop: '10px' }}
                     />
-                    <Button type="submit" onClick={(event) => { handleFormSubmit(event) }}>Sign in</Button>
+                    <Button type="submit" style={{ marginTop: '10px' }} onClick={(event) => { handleFormSubmit(event) }}>Sign in</Button>
                     <ToastContainer autoClose={2000} />
                 </Form>
-                <Link to="/signup">Don't have an account?</Link>
-            </Container>
+                <Link to="/signup"  >Don't have an account?</Link>
+            </Container >
         </div>
     )
 }

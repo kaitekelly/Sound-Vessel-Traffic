@@ -1,24 +1,12 @@
 import React from "react";
-import ImageBackground from "../components/Images/Seattle-Boats.jpg";
 import '../App.css';
 import { Link } from "react-router-dom";
 import SoundVesselTrafficLandingpageBackground from "../components/Videos/SoundVesselTrafficLandingpageBackground.mp4";
-import Jumbotron from 'react-bootstrap/Jumbotron'
-import Container from 'react-bootstrap/Container'
 
 function LandingPage() {
 
     return (
         <div>
-            {/* <div style={{
-            backgroundImage: `url(${ImageBackground})`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            width: "100%",
-            height: "1000px",
-        }}> */}
-
             <video autoPlay loop muted
                 style={{
                     position: "absolute",
@@ -30,13 +18,10 @@ function LandingPage() {
             >
                 <source src={SoundVesselTrafficLandingpageBackground} type="video/mp4" />
             </video>
-
             <div className="container" style={{ color: "white", textShadow: "3px 3px 3px #000000", textAlign: "center", paddingTop: "150px" }}>
-
                 <h1 style={{ fontFamily: 'Kaushan Script', fontSize: "75px" }}>Welcome to Sound Vessel Traffic</h1>
                 <h1 style={{ fontFamily: 'Kaushan Script' }}>Hello Boats</h1>
                 <h2 style={{ fontFamily: 'Kaushan Script' }}>Sail the world</h2>
-
                 <Link
                     to="/userlogin"
                     className={
@@ -44,17 +29,7 @@ function LandingPage() {
                             ? "nav-link active"
                             : "nav-link"
                     }
-
                 ><button style={{ fontFamily: 'Kaushan Script' }} type="button" className="btn btn-outline-primary">Enter Site</button></Link>
-                {/* <Link
-                    to="/signup"
-                    className={
-                        window.location.pathname === "/signup" || window.location.pathname === "/signup"
-                            ? "nav-link active"
-                            : "nav-link"
-                    }
-
-                ><button style={{ fontFamily: 'Kaushan Script' }} type="button" className="btn btn-outline-primary"> Sign Up</button></Link> */}
             </div>
         </div >
     )

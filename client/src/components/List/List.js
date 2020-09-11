@@ -1,5 +1,4 @@
-import ListGroup from 'react-bootstrap/ListGroup';
-import React, { Component } from "react";
+import React from "react";
 
 export function List({ children }) {
     return (

@@ -1,9 +1,5 @@
 import React from "react";
-import VesselDummyData from "../../utils/VesselDummyData";
 import ShipDummyData from "../../utils/ShipDummyData"
-// import Iframe from 'react-iframe'
-// import ScriptTag from 'react-script-tag';
-
 
 class VesselList extends React.Component {
     constructor(props) {
@@ -20,16 +16,11 @@ class VesselList extends React.Component {
     }
 
     render() {
-
         const { boats } = this.state;
-
         console.log(this.state.boats)
-
         return (
             <div>
                 <table>
-
-
                     <thead>
                         <tr>
                             <th style={{ width: "25%", height: "50%" }}> Image</th>
@@ -39,7 +30,6 @@ class VesselList extends React.Component {
                             <th style={{ width: "25%", height: "50%" }}> Destination</th>
                         </tr>
                     </thead>
-
                     <tbody id="employeeTable">
                         {boats.map((boat, index) => (
 
@@ -50,20 +40,12 @@ class VesselList extends React.Component {
                                 <td>{boat.TYPE_NAME}</td>
                                 <td>{boat.DESTINATION}</td>
                             </tr>
-
                         ))}
                     </tbody>
                 </table>
-
-
             </div>
         )
-
     }
-
 }
-
-
-
 
 export default VesselList

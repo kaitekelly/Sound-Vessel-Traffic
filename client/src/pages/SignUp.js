@@ -50,45 +50,48 @@ function SignUpPage() {
     return (
         <div>
             <Navbar />
-            <Container style={{ width: '25rem', textAlign: 'center' }}>
-            <Image src={logoImg} alt="My logo" />
-                <Form width="50%">
+            <Container style={{ width: '25rem', textAlign: 'center', marginTop: '10px' }}>
+                <Image src={logoImg} alt="My logo" />
+                <Form width="50%" className="shadow p-3 mb-5 bg-white rounded"  >
                     <Form.Control
                         type="text"
                         placeholder="first name"
                         name="first_name"
                         onChange={handleInputChange}
+                        style={{ marginTop: '10px' }}
                     />
                     <Form.Control
                         type="text"
                         placeholder="last name"
                         name="last_name"
                         onChange={handleInputChange}
+                        style={{ marginTop: '10px' }}
                     />
                     <Form.Control
                         type="email"
                         placeholder="email"
                         name="username"
                         onChange={handleInputChange}
+                        style={{ marginTop: '10px' }}
                     />
                     <Form.Control
                         type="password"
                         placeholder="password"
                         name="password"
                         onChange={handleInputChange}
+                        style={{ marginTop: '10px' }}
                     />
                     <Form.Control
                         type="password"
                         placeholder="retype password"
+                        style={{ marginTop: '10px' }}
                     />
-                    <Button
+                    <Button style={{ marginTop: '10px' }}
                         onClick={(event) => { handleFormSubmit(event) }} variant="primary" type="submit"
                     >Sign Up</Button>
                     <ToastContainer autoClose={4000} />
                 </Form>
             </Container>
-
-
         </div>
     )
 }
