@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import Navbar from '../components/Navbar/Navbar';
 import { useHistory } from "react-router-dom";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import Button from "react-validation/build/button";
-import { Card } from "react-bootstrap"
-
-// import logoImg from '../img/ship.png';
-// import { Card, Logo, Form, Input, Button } from '../components/AuthForm';
+import { Image, Container, Form, Button } from "react-bootstrap"
+import logoImg from '../img/ship.png';
 import API from "../utils/API";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,25 +19,25 @@ function SignUpPage() {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
-        setUserObject({...userObject, [name]: value})
+        setUserObject({ ...userObject, [name]: value })
         console.log(value)
     }
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
         console.log("I'm a new user")
-            API.saveUser({
-                first_name: userObject.first_name,
-                last_name: userObject.last_name,
-                username: userObject.username,
-                password: userObject.password
-            })
-            console.log(userObject)
-            setUserObject("");
-            toasty();
-            setTimeout(() => {
-                history.push("/plantrip")
-            }, 2000);
+        API.saveUser({
+            first_name: userObject.first_name,
+            last_name: userObject.last_name,
+            username: userObject.username,
+            password: userObject.password
+        })
+        console.log(userObject)
+        setUserObject("");
+        toasty();
+        setTimeout(() => {
+            history.push("/plantrip")
+        }, 2000);
     }
 
     function toasty() {
@@ -55,45 +50,48 @@ function SignUpPage() {
     return (
         <div>
             <Navbar />
-            <Card>
-                {/* <Logo src={logoImg} /> */}
-                <Form>
-                    <Input
+            <Container style={{ width: '25rem', textAlign: 'center', marginTop: '10px' }}>
+                <Image src={logoImg} alt="My logo" />
+                <Form width="50%" className="shadow p-3 mb-5 bg-white rounded"  >
+                    <Form.Control
                         type="text"
                         placeholder="first name"
                         name="first_name"
                         onChange={handleInputChange}
+                        style={{ marginTop: '10px' }}
                     />
-                    <Input
+                    <Form.Control
                         type="text"
                         placeholder="last name"
                         name="last_name"
                         onChange={handleInputChange}
+                        style={{ marginTop: '10px' }}
                     />
-                    <Input
+                    <Form.Control
                         type="email"
                         placeholder="email"
                         name="username"
                         onChange={handleInputChange}
+                        style={{ marginTop: '10px' }}
                     />
-                    <Input
+                    <Form.Control
                         type="password"
                         placeholder="password"
                         name="password"
                         onChange={handleInputChange}
+                        style={{ marginTop: '10px' }}
                     />
-                    <Input
+                    <Form.Control
                         type="password"
                         placeholder="retype password"
+                        style={{ marginTop: '10px' }}
                     />
-                    <Button 
-                    onClick={(event) => { handleFormSubmit(event)}} variant="primary" type="submit"
+                    <Button style={{ marginTop: '10px' }}
+                        onClick={(event) => { handleFormSubmit(event) }} variant="primary" type="submit"
                     >Sign Up</Button>
                     <ToastContainer autoClose={4000} />
                 </Form>
-            </Card>
-
-
+            </Container>
         </div>
     )
 }

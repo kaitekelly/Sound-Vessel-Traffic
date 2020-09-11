@@ -23,13 +23,8 @@ app.use(passport.session());
 app.use(require("./routes"));
 
 
-// app.listen(PORT, function() {
-//     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-//   });
-//*** When i uncomment this listener for sequelize it says port 3001 is already in use
   db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
       console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
     });
-  });
-  
+  });  

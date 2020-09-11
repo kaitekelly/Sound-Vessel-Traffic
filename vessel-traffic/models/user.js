@@ -1,5 +1,3 @@
-const bcrypt = require("bcryptjs");
-// models should look like below
 module.exports = function (sequelize, DataTypes) {
     const User = sequelize.define("User", {
         user_id: {

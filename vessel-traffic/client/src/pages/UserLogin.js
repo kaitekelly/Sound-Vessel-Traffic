@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import Navbar from '../components/Navbar/Navbar';
 import { Link, useHistory } from "react-router-dom";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
-// import logoImg from '../img/ship.png';
-// import { Form, Input, Logo, Button } from '../components/AuthForm';
+import logoImg from '../img/ship.png';
 import API from "../utils/API";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Card } from "react-bootstrap"
+import { Image, Container, Form, Button } from "react-bootstrap"
 
 function UserLoginPage() {
     const [userObject, setUserObject] = useState({
@@ -21,7 +17,7 @@ function UserLoginPage() {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
-        setUserObject({...userObject, [name]: value})
+        setUserObject({ ...userObject, [name]: value })
         console.log(value)
     }
 
@@ -30,16 +26,11 @@ function UserLoginPage() {
         console.log("I'm logging in!")
         if (userObject.username && userObject.password) {
             API.getUser()
-            .then (result => {
-                console.log(result)
-                setUserObject("");
-                toasty();
-                setTimeout(() => {
-                    history.push("/plantrip")
-                }, 2000);
-
-            })
-            
+            setUserObject("");
+            toasty();
+            setTimeout(() => {
+                history.push("/plantrip")
+            }, 2000);
         }
     }
 
@@ -52,26 +43,28 @@ function UserLoginPage() {
     return (
         <div>
             <Navbar />
-            <Card>
-                {/* <Logo src={logoImg} /> */}
-                <Form method="post">
-                    <Input
+            <Container style={{ width: '25rem', textAlign: 'center', marginTop: '10px', marginBottom: '20px' }}>
+                <Image src={logoImg} alt="My logo" style={{ justifyContent: 'center' }} />
+                <Form method="post" className="shadow p-3 mb-5 bg-white rounded" >
+                    <Form.Control
                         type="email"
                         placeholder="email"
                         name="username"
                         onChange={handleInputChange}
+                        style={{ marginTop: '10px' }}
                     />
-                    <Input
+                    <Form.Control
                         type="password"
                         placeholder="password"
                         name="password"
                         onChange={handleInputChange}
+                        style={{ marginTop: '10px' }}
                     />
-                    <CheckButton type="submit" onClick={handleFormSubmit}>Sign in</CheckButton>
+                    <Button type="submit" style={{ marginTop: '10px' }} onClick={(event) => { handleFormSubmit(event) }}>Sign in</Button>
                     <ToastContainer autoClose={2000} />
                 </Form>
-                <Link to="/signup">Don't have an account?</Link>
-            </Card>
+                <Link to="/signup"  >Don't have an account?</Link>
+            </Container >
         </div>
     )
 }

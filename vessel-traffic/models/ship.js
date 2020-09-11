@@ -46,6 +46,9 @@ module.exports = function (sequelize, DataTypes) {
     ship_width: {
       type: DataTypes.INTEGER
     },
+    ship_image: {
+      type: DataTypes.STRING
+    }
 
   });
 

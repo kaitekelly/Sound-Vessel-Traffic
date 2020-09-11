@@ -5,6 +5,7 @@
   "engines": {
     "node": "12.16.1"
   },
+  "proxy": "http://localhost:3001/",
   "secure": false,
   "dependencies": {
     "@auth0/auth0-react": "^1.0.0",

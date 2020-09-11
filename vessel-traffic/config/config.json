@@ -22,11 +22,7 @@
       }
     },
     "production": {
-      "username": "root",
-      "password": "whitecat1",
-      "database": "sound_vessel_traffic_db",
-      "host": "127.0.0.1",
-      "port": 3306,
+      "use_env_variable": "JAWSDB_URL",
       "dialect": "mysql",
       "define": {
         "timestamps": false
