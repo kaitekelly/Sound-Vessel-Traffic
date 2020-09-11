@@ -10,7 +10,6 @@ passport.deserializeUser((obj, cb) => {
   cb(null, obj);
 });
 
-
 // passport.use(new LocalStrategy(
 //     // {
 //     //     usernameField: "username",
