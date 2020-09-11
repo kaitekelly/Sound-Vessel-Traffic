@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Navbar from '../components/Navbar/Navbar';
-import FormCheck from 'react-bootstrap/FormCheck';
-import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Calendar from 'react-calendar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import InputGroup from 'react-bootstrap/InputGroup'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ImageBackground from "../components/Images/Seattle-Boats2.JPG";
@@ -21,15 +17,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import MarineTrafficMap from "../components/MarineTrafficMap/MarineTrafficMap"
 import '../App.css';
 
-
-
 function PlanTrip() {
 
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const [traffic, setTraffic] = useState([]);
     const [trip, setTrip] = useState([])
-
 
     const [searchTerm, setSearchTerm] = useState({
         startLocation: "",
@@ -55,7 +48,6 @@ function PlanTrip() {
             start_sail_date: tripDates.startingDate,
             end_sail_date: tripDates.endingDate
         })
-
         setSearchTerm("")
     }
 
@@ -64,10 +56,7 @@ function PlanTrip() {
         toast("Your trip has been saved", {
             position: toast.POSITION.TOP_CENTER
         });
-
     }
-
-
 
     const handleInputChange = (event, date) => {
         event.preventDefault();
@@ -76,7 +65,6 @@ function PlanTrip() {
             ...searchTerm, [event.target.name]: value
         });
         console.log(value)
-
     }
 
     const handleStartChangeDate = (date) => {
@@ -87,7 +75,6 @@ function PlanTrip() {
         console.log(date)
     }
 
-
     const handleEndChangeDate = (date) => {
         setTripDates({
             ...tripDates,
@@ -95,7 +82,6 @@ function PlanTrip() {
         })
         console.log(date)
     }
-
 
     const onSubmitHandler = (event) => {
         // Prevent browser refreshing after form submission
@@ -141,11 +127,8 @@ function PlanTrip() {
     }
 
     return (
-
         <div className="bg">
-
             <Navbar />
-
             <Jumbotron fluid id="planTripPageStyle" style={{
                 backgroundImage: ` url(${ImageBackground})`,
                 backgroundPosition: 'center',
@@ -158,15 +141,12 @@ function PlanTrip() {
             }}>
                 <Container>
                     <h1 style={{ textAlign: "center", color: "white", marginTop: "150px", fontFamily: 'Kaushan Script', fontSize: "75px", textShadow: "4px 4px 4px #000000" }}>Plan your trip here</h1>
-
                 </Container>
             </Jumbotron>
-
             <Row >
                 <Col id="planTripRow">
                     <MarineTrafficMap />
                 </Col>
-
                 <Col id="planTripRow">
                     {/* 
                     <Button><Link
@@ -175,22 +155,17 @@ function PlanTrip() {
                     >
                         <h1 style={{ color: "white" }}>Plan your voyage</h1>
                     </Link></Button> */}
-
                     <Container style={{ backgroundColor: "gray", borderRadius: "10px", marginTop: "100px" }}>
-
                         <h1 style={{ textAlign: "center", color: "white", fontFamily: 'Kaushan Script', textShadow: "4px 4px 4px #000000" }}>Start a trip</h1>
-
                         <Form >
                             <Form.Group controlId="formBasicEmail" >
                                 <Form.Label>Start</Form.Label>
                                 <Form.Control type="text" placeholder="Start location" value={searchTerm.startLocation} name="startLocation" onChange={handleInputChange} style={{ borderRadius: "10px" }} />
                             </Form.Group>
-
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>End</Form.Label>
                                 <Form.Control type="text" placeholder="End location" value={searchTerm.endLocation} name="endLocation" onChange={handleInputChange} style={{ borderRadius: "10px" }} />
                             </Form.Group>
-
                             <Container>
                                 <br></br>
                                 <Row>
@@ -221,19 +196,14 @@ function PlanTrip() {
                                     <Form.Check type="checkbox" label="Save Trip" />
                                 </Form.Group>
                             </Container>
-
-
                             <Button onClick={(event) => { handleFormSubmit(event); toasty(); setTimeout() }} variant="primary" type="submit">
                                 Submit
-</Button>
+                            </Button>
                             <ToastContainer autoClose={4000} />
                         </Form>
-
                     </Container>
                 </Col>
             </Row>
-
-
 
             {/* <Container fluid id="resultsdiv" style={{ color: "white", textAlign: "center" }} >
                 <h1 >Ships encountered</h1>
@@ -272,19 +242,16 @@ function PlanTrip() {
                     <List>
                         {trip.map(trips => (
                             <ListItem key={trips.sail_date_id}>
-
-                                    <strong>
-                                        <ul>
-                                        <h2  style={{ textAlign: "center", color: "black", fontFamily: 'Kaushan Script', textShadow: "4px 4px 4px #000000" }}>Trip Start Date:</h2>
+                                <strong>
+                                    <ul>
+                                        <h2 style={{ textAlign: "center", color: "black", fontFamily: 'Kaushan Script', textShadow: "4px 4px 4px #000000" }}>Trip Start Date:</h2>
                                         <Link to={"/plannedtrip/" + trips.sail_date_id}>
-
-                                                <Button> {trips.start_sail_date.split("T")[0]}</Button>
-                                                </Link>
-
-                                        </ul>
-                                    </strong>
+                                            <Button> {trips.start_sail_date.split("T")[0]}</Button>
+                                        </Link>
+                                    </ul>
+                                </strong>
                                 <br></br>
-                                <Button  onClick={() => deleteTrip(trips.sail_date_id)}><span style={{color:"red"}}>X</span> || Delete Trip || <span style={{color:"red"}}>X</span></Button>
+                                <Button onClick={() => deleteTrip(trips.sail_date_id)}><span style={{ color: "red" }}>X</span> || Delete Trip || <span style={{ color: "red" }}>X</span></Button>
                             </ListItem>
                         ))}
                     </List>
@@ -292,11 +259,8 @@ function PlanTrip() {
                         <h3>No Results to Display</h3>
                     )}
             </Container>
-
-
         </div>
     )
-
 }
 
 export default PlanTrip;

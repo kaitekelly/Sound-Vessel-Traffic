@@ -18,20 +18,13 @@ module.exports = function (sequelize, DataTypes) {
         end_sail_date: {
             type: DataTypes.DATE
         },
-        
     });
 
     Trip.associate = function (models) {
         Trip.hasMany(models.Ship, {
-                foreignKey: 'main_id'
+            foreignKey: 'main_id'
         }
-
         )
     }
-
     return Trip;
-
 }
-
-
-
