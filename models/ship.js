@@ -1,6 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
   var Ship = sequelize.define("Ship", {
-
     main_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -36,7 +35,11 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     eta: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      references: {
+        model: "Trip",
+        key: "start_sail_date"
+    }
     },
     ship_length: {
       type: DataTypes.INTEGER
@@ -47,16 +50,12 @@ module.exports = function (sequelize, DataTypes) {
     ship_image: {
       type: DataTypes.STRING
     }
-
   });
-
-  Ship.associate = function (models) {
-    Ship.belongsTo(models.Trip, {
-      foreignKey: "main_id"
-    }
-    );
-  }
-
+  // Ship.associate = function (models) {
+  //   Ship.belongsTo(models.Trip, {
+  //     foreignKey: "main_id"
+  //   }
+  //   );
+  // }
   return Ship;
 }
-
