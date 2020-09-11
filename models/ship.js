@@ -47,11 +47,16 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING
     }
   });
+
   // Ship.associate = function (models) {
   //   Ship.belongsTo(models.Trip, {
-  //     foreignKey: "main_id"
+  //     as: "leader",
+  //     onDelete: 'NO ACTION',
+  //     onUpdate: 'CASCADE',
+  //     allowNull: true
   //   }
   //   );
   // }
+
   return Ship;
 }

@@ -2,8 +2,8 @@ module.exports = function (sequelize, DataTypes) {
     var Trip = sequelize.define("Trip", {
         sail_date_id: {
             type: DataTypes.INTEGER,
-            allowNull: true,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         start_destination: {
             type: DataTypes.STRING
@@ -23,9 +23,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.DATE
         },
     });
+
     // Trip.associate = function (models) {
     //     Trip.hasMany(models.Ship, {
-    //         foreignKey: 'main_id'
+    //         foreignKey: 'main_id',
+    //         onDelete: 'cascade'
     //     }
     //     )
     // }
