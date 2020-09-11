@@ -3,13 +3,13 @@ const router = require("express").Router();
 //route to get all trips
 router.route("/").get(function(req, res) {
     let query = {};
-    if (req.query.trip_id) {
-        query.TripId = req.query.trip_id;
+    if (req.query.sail_date_id) {
+        query.TripId = req.query.sail_date_id;
     }
     db.Trip.findAll({
         where: query,
         // includes: [{model: db.Trip, include: [{ model: db.Ship}]}]
-        include:  [db.Ship]
+        includes:  [db.Trip]
     }).then(function(dbTrip) {
         res.send(dbTrip);
     });
@@ -22,8 +22,8 @@ router.route("/:id").get(function(req, res) {
         where: {
             sail_date_id: req.params.id
         },
-        // includes: [{model: db.Trip, include: [{ model: db.Ship}]}]
-        include: [db.Ship]
+        includes: [{model: db.Trip, include: [{ model: db.Ship}]}]
+        // include: 'leader'
     }).then(function(dbTrip) {
         console.log("find the problem")
         res.json(dbTrip);
@@ -63,8 +63,17 @@ router.route("/:id").get(function(req, res) {
 });
 //Trip route for saving a new trip
 router.route("/").post(function(req, res) {
-    db.Trip.create(req.body).then(function(dbTrip) {
+    console.log(req.body)
+    db.Trip.create({
+        start_destination: req.body.start_destination,
+        end_destination: req.body.end_destination,
+        start_sail_date: req.body.start_sail_date,
+        end_sail_date: req.body.end_sail_date
+    }).then(function(dbTrip) {
+        console.log("is this functioning properly?")
         res.json(dbTrip);
+    }).catch(err => {
+        res.status(401).json(err);
     });
 });
 //DELETE route for deleting trips
