@@ -2,8 +2,8 @@ module.exports = function (sequelize, DataTypes) {
   var Ship = sequelize.define("Ship", {
     main_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     ship_id: {
       type: DataTypes.INTEGER
@@ -45,12 +45,18 @@ module.exports = function (sequelize, DataTypes) {
     },
     ship_image: {
       type: DataTypes.STRING
-    }
+    },
+    // trip_id: {
+    //   type: DataTypes.INTEGER,
+    //   required: true,
+    //   allowNull: true
+    // }
+
   });
 
   // Ship.associate = function (models) {
   //   Ship.belongsTo(models.Trip, {
-  //     as: "leader",
+  //     foreignKey: 'trip_id',
   //     onDelete: 'NO ACTION',
   //     onUpdate: 'CASCADE',
   //     allowNull: true

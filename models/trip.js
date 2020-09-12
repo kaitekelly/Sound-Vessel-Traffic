@@ -25,11 +25,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     // Trip.associate = function (models) {
-    //     Trip.hasMany(models.Ship, {
-    //         foreignKey: 'main_id',
-    //         onDelete: 'cascade'
-    //     }
-    //     )
+    //     Trip.hasOne(models.Ship)
     // }
     return Trip;
 }

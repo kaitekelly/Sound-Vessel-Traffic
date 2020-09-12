@@ -1,9 +1,9 @@
 {
     "development": {
-      "username": "root",
-      "password": "whitecat1",
-      "database": "sound_vessel_traffic_db",
-      "host": "127.0.0.1",
+      "username": "x6sh14amy2d40h83",
+      "password": "ckjbp9w73hmphzc1",
+      "database": "imr8t3vu9kp2z1sk",
+      "host": "sh4ob67ph9l80v61.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
       "port": 3306,
       "dialect": "mysql",
       "define": {
