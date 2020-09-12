@@ -4,23 +4,23 @@ const router = require("express").Router();
 router.route("/").get(function(req, res) {
   console.log("is this a problem?")
   let query = {};
-  if (req.query.ship_id) {
-    query.ShipId = req.query.ship_id;
+  if (req.query.main_id) {
+    query.ShipId = req.query.main_id;
   }
   db.Ship.findAll({
     where: query,
     includes: [db.Ship]
   }).then(function(dbShip) {
-    res.json(dbShip);
+    res.send(dbShip);
   });
 });
 // Get route for retrieving a single ship
 router.route("/:id").get(function(req, res) {
   db.Ship.findOne({
     where: {
-      id: req.params.id
+      main_id: req.params.id
     },
-    include: [db.Ship]
+    includes: [{model: db.Trip, include: [{ model: db.Ship}]}]
   }).then(function(dbShip) {
     res.json(dbShip)
   });
