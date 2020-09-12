@@ -15,53 +15,32 @@ function PlannedTrip() {
     const [trip, setTrip] = useState([])
     const [trippy, setTrippy] = useState([{}])
     const [traffic, setTraffic] = useState([]);
-    const [trafficMatch, setTrafficMatch] = useState([{}]);
+    const [trafficMatch, setTrafficMatch] = useState([]);
     const { id } = useParams()
     const [show, setShow] = useState(false);
     const handleClose = () => setModalId("");
     const handleShow = () => setShow(true);
     const [modalId, setModalId] = useState("");
+    const [searchTerm, setSearchTerm] = React.useState("");
 
-    useEffect(() => {
-        loadTrips()
-    }, [])
 
-    useEffect(() => {
-        loadTraffic()
-    }, [])
+    // function loadTrips() {
+    // //     return 
+    // //         .catch(err => console.log(err));
+    // // };
 
-    function loadTrips() {
-        API.getPlannedTrips(id)
-            .then(res => {
-                console.log(res.data)
-                setTrip(res.data)
-            })
-            .catch(err => console.log(err));
-    };
+    // function loadTraffic() {
+    //     return 
+    //         .catch (err => console.log(err));
+    // };
 
-    function loadTraffic() {
-        API.getTraffic()
-            .then(res => {
-                console.log(res.data)
-                setTraffic(res.data)
-                setTrafficMatch(res.data)
-                console.log(trafficMatch)
-            })
-            .catch(err => console.log(err));
+    // useEffect(() => {
+    //     loadTrips()
+    // }, [])
 
-        // let matchingDates =[]
-
-        // let matchedDates = trafficMatch.filter(function(event){
-        //     if(trafficMatch.eta == trip.start_sail_date) {
-        //         return true
-        //     } 
-        //     // setTrafficMatch(matchedDates)
-        //     matchingDates.push(matchedDates)
-
-        // })
-        // console.log(matchingDates)
-    };
-
+    // useEffect(() => {
+    //     loadTraffic()
+    // },[])
 
     //     function checkETA() {
     //         let matchingDates =[]
@@ -90,17 +69,77 @@ function PlannedTrip() {
     //     console.log(matchedDates)
 
     //   }
-    let matchingDates = []
 
-    let matchedDates = trafficMatch.filter(function (event) {
-        if (event.eta === trip.start_sail_date) {
-            return true
-        }
+    useEffect(() => {
+        API.getPlannedTrips(id)
+            .then(({data: tripData}) => {
+                setTrip(tripData)
+                API.getTraffic()
+                    .then(({data: trafficData}) => {
+                        setTrafficMatch(trafficData)
+                        let matchingDates = []
+                        let shipMatchingDates = []
+                        shipMatchingDates.push(tripData.start_sail_date && tripData.start_sail_date.split("T")[0])
+                        console.log(trafficData)
+                        trafficData.forEach(function (event) {
+                            console.log(event.eta && event.eta.split("T")[0])
+                            matchingDates.push(event.eta && event.eta.split("T")[0])
+                        });
 
-    })
-    matchingDates = matchingDates.concat(matchedDates)
-    console.log(matchedDates)
+                        let result = []
+                        console.log(shipMatchingDates)
+                        console.log(matchingDates)
+                        for (var i = 0; i < shipMatchingDates.length; i++) {
+                            for (var j = 0; j < matchingDates.length; j++) {
 
+                                console.log(`comparing ${shipMatchingDates[i]} to ${matchingDates[j]}`)
+                                if (shipMatchingDates[i] == matchingDates[j]) {
+                                    console.log("found match")
+                                    result.push(shipMatchingDates);
+                                }
+                            }
+                        };
+
+                        console.log("matches: ", result)
+                        setTraffic(result)
+                    })
+            }
+            )
+
+    }, [])
+
+    // console.log(traffic)
+
+
+    // console.log(trafficMatch)
+    // let matchingDates = []
+    // let shipMatchingDates = []
+    // console.log(trip.start_sail_date && trip.start_sail_date.split("T")[0])
+    // shipMatchingDates.push(trip.start_sail_date && trip.start_sail_date.split("T")[0])
+
+    // trafficMatch.filter(function (event) {
+    //     console.log(event.eta && event.eta.split("T")[0])
+    //     matchingDates.push(event.eta && event.eta.split("T")[0])
+    //     // if (event.eta === trip.start_sail_date) {
+
+    //     //     return true
+    //     // }
+    // })
+    // console.log(matchingDates)
+    // console.log(shipMatchingDates)
+
+    // let result = []
+
+
+    // for (var i = 0; i < shipMatchingDates.length; i++) {
+    //     for (var j = 0; j < matchingDates.length; j++) {
+    //         if (shipMatchingDates[i] == matchingDates[j]) {
+    //             result.push(shipMatchingDates);
+    //         }
+    //     }
+    // }
+
+    // console.log(result)
 
 
     return (
@@ -133,25 +172,31 @@ function PlannedTrip() {
                 <h2> End Sail Date: {trip.end_sail_date && trip.end_sail_date.split("T")[0]}</h2>
                 <br></br>
                 <h1 style={{ textAlign: "center", fontSize: "50px" }}><Link to="/plantrip">← Back to Plan a Trip</Link>
-</h1>
+                </h1>
 
 
             </Container>
 
             <Container fluid id="resultsdiv" style={{ color: "black", textAlign: "center" }} >
                 <h1 >Ships encountered</h1>
-                {matchingDates.length > 0 ? (
+                {trafficMatch.length > 0 ? (
+
                     <List>
-                        {matchingDates.map((traffics, index) => {
-                            console.log(traffics)
-                            return (<ListItem key={traffics.ship_id} value={traffics}>
+
+                        {trafficMatch.filter((elem) => {
+                            let start_sail_date = trip.start_sail_date && trip.start_sail_date.split("T")[0];
+                            let eta=  elem.eta && elem.eta.split("T")[0];
+                            return start_sail_date === eta
+                        }).map((traffics) => {
+
+                            return (<ListItem key={traffics.id} value={traffics}>
                                 <strong>
-                                    <Button variant="primary" onClick={() => setModalId(`modal${index}`)}>
+                                    <Button variant="primary" onClick={() => setModalId(`modal${traffics}`)}>
                                         Ship Name: {traffics.ship_name}
                                     </Button>
 
                                     <ul>
-                                        <Modal size="lg" show={modalId === `modal${index}`} onHide={handleClose}>
+                                        <Modal size="lg" show={modalId === `modal${traffics}`} onHide={handleClose}>
                                             <Modal.Header closeButton>
                                                 <Modal.Title>Ship Name: {traffics.ship_name}</Modal.Title>
                                             </Modal.Header>
@@ -160,13 +205,13 @@ function PlannedTrip() {
                                                 <br></br>
                                             Ship ID: {traffics.ship_id}
                                                 <br></br>
-                                         Ship Type: {traffics.ship_type_name}
+                                            Ship Type: {traffics.ship_type_name}
                                                 <br></br>
-                                         Flag: {traffics.flag}
+                                            Flag: {traffics.flag}
                                                 <br></br>
-                                         Destination: {traffics.destination}
+                                            Destination: {traffics.destination}
                                                 <br></br>
-                                         Eta: {traffics.eta && traffics.eta.split("T")[0]}
+                                            Eta: {traffics.eta && traffics.eta.split("T")[0]}
                                                 <br></br>
                                                 <img style={{ width: "750px", height: "750px" }} src={traffics.ship_image} alt="shipImage" />
                                             </Modal.Body>
@@ -199,38 +244,6 @@ function PlannedTrip() {
                     )}
 
             </Container>
-
-            {/* <Container fluid id="resultsdiv" style={{ color: "white", textAlign: "center" }} >
-                <h1 style={{ color: "black" }} >Trips</h1>
-                {trip.length ? (
-                    <List>
-                        {trippy.map(trips => (
-                            <ListItem key={trips.sail_date_id}>
-                                <Link to={"/plannedtrip/" + trips.sail_date_id}>
-                                    <strong>
-                                        <ul>
-                                            Start: {trips.start_destination}
-                                            <br></br>
-                                         End: {trips.end_destination}
-                                            <br></br>
-                                         Start Date: {trips.start_sail_date}
-                                            <br></br>
-                                         End Date: {trips.end_sail_date}
-                                            <br></br>
-                                         Eta: {trips.eta}
-                                        </ul>
-
-                                    </strong>
-                                </Link>
-                                <br></br>
-                                <DeleteBtn onClick={() => deleteBook(traffics.sail_date_id)} />
-                            </ListItem>
-                        ))}
-                    </List>
-                ) : (
-                        <h3>No Results to Display</h3>
-                    )}
-            </Container> */}
 
         </div>
     )
