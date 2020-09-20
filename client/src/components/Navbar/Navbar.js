@@ -26,7 +26,7 @@ function Navbar() {
             </Link>
           </li>
           
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link
               to="/search"
               id="navbarLink"
@@ -34,7 +34,7 @@ function Navbar() {
             >
               Search Boats
             </Link>
-          </li>
+          </li> */}
           
           <li className="nav-item">
             <Link

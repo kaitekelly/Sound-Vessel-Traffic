@@ -143,17 +143,12 @@ function PlanTrip() {
                 </Container>
             </Jumbotron>
             <Row >
-                <Col id="planTripRow">
+                <Col id="planTripRow" xs={{ span: 12, order: 2 }} md={{ span: 6, order: 1 }}>
+                    <Container style={{ marginTop: "100px" }}>
                     <MarineTrafficMap />
+                    </Container>
                 </Col>
-                <Col id="planTripRow">
-                    {/* 
-                    <Button><Link
-                        to="/plantrip"
-                        className={window.location.pathname === "/plantrip" ? "nav-link active" : "nav-link"}
-                    >
-                        <h1 style={{ color: "white" }}>Plan your voyage</h1>
-                    </Link></Button> */}
+                <Col id="planTripRow" xs={{ span: 12, order: 1 }} md={{ span: 6, order: 2 }}>
                     <Container style={{ backgroundColor: "gray", borderRadius: "10px", marginTop: "100px" }}>
                         <h1 style={{ textAlign: "center", color: "white", fontFamily: 'Kaushan Script', textShadow: "4px 4px 4px #000000" }}>Start a trip</h1>
                         <Form >
